@@ -1,0 +1,20 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ul id="nav-info" class="clearfix">
+        <li><a href="dashbord.xhtml"><i class="icon-home"></i></a></li>
+        <li class="active"><a href="#">#{module}</a></li>
+    </ul>
+    <ul class="nav-dash">
+        <li> <a href="#modal-alarme-total" data-toggle="modal" title="Total Alarmes "> <i class="icon-bell"></i> <span class="badge badge-important">#{beanAlarmes.countAlarmes}</span> </a> </li>
+        <li> <a href="#modal-alarme-platine" data-toggle="modal" title="Platine"> <i class="icon-dashboard"></i> <span class="badge badge-important">#{beanDashbord.countAlarmes}</span> </a> </li>
+        <li> <a href="#modal-alarme-collect" data-toggle="modal" title="Collecte"> <i class="icon-copy"></i> <span class="badge badge-important">#{beanCollect.countAlarmes}</span> </a> </li>
+        <li> <a href="#modal-alarme-traitement" data-toggle="modal" title="Traitement"> <i class="icon-edit"></i> <span class="badge badge-important">#{beanTraitement.countAlarmes}</span> </a> </li>
+        <li> <a href="#modal-alarme-distribution" data-toggle="modal" title="Distribution"> <i class="icon-upload-alt"></i> <span class="badge badge-important">#{beanDistribution.countAlarmes}</span></a> </li>
+        <li> <a href="#modal-alarme-iecc" data-toggle="modal" title="Interface"> <i class="icon-desktop"></i> <span class="badge badge-important">#{beanInterface.countAlarmes}</span></a> </li>
+    </ul>
+</ui:composition>
+

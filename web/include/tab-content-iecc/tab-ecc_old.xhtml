@@ -1,0 +1,169 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <h:panelGroup class="tab-pane" id="tabs-ecc" layout="block">
+        <h:panelGroup id="tabs-ecc-panel">
+            <div class="row-fluid">
+                <div class="span10">
+                    <table class="table table-bordered">
+                        <tbody>
+                            <thead>
+                                <tr>
+                                    <th class="span4"> N° ECC </th>
+                                    <td class="text-right">#{beanInterface.ecc.id}</td>
+                                </tr>
+                                <tr>
+                                    <th class="span4">Libelle</th>  
+                                    <td class="text-right">#{beanInterface.ecc.ecc}</td>  
+                                </tr>
+                                <tr>
+                                    <th class="span4">Etat ECC</th>
+
+                                    <td class="text-right">#{beanInterface.ecc.bilanRequete.etatEchange}</td> 
+                                </tr>
+
+                            </thead>
+
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+            <div class="row-fluid">
+
+                <div class="span5">
+                    <h4 class="page-header">Données en entrée</h4>
+                    <table class="table table-bordered">
+                        <tbody>
+                            <thead>
+                                <tr>
+                                    <th class="span4"> Volume (Mo) </th>
+                                    <td class="text-right">xxx</td>
+                                </tr>
+
+                                <tr>
+                                    <th class="span4">Nb. DC</th>  
+                                    <td class="text-right">xxxx</td>  
+                                </tr>
+                                <tr>
+                                    <th class="span4">Débit en (Ko/s)</th>
+
+                                    <td class="text-right">xxxx</td> 
+                                </tr>
+                                <tr>
+                                    <th class="span4">Débit en (DC/s)</th>
+
+                                    <td class="text-right">xxxx</td> 
+                                </tr>
+
+                            </thead>
+
+                        </tbody>
+                    </table>
+
+                    <table class="table table-bordered">
+                        <tbody>
+                            <thead>
+                                <tr>
+                                    <th class="span4">Nb.DC hors-délai </th>
+                                    <td class="text-right">xxx</td>
+                                </tr>
+                            </thead>
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="span5">
+                    <h4 class="page-header">Données en sortie</h4>
+                    <table class="table table-bordered">
+                        <tbody>
+                            <thead>
+                                <tr>
+                                    <th class="span4"> Volume (Mo) </th>
+                                    <td class="text-right">xxx</td>
+                                </tr>
+
+                                <tr>
+                                    <th class="span4">Nb. DC</th>  
+                                    <td class="text-right">xxxx</td>  
+                                </tr>
+                                <tr>
+                                    <th class="span4">Nb. de fichiers</th>  
+                                    <td class="text-right">xxxx</td>  
+                                </tr>
+
+                            </thead>
+
+                        </tbody>
+                    </table>
+                    <h4 class="page-header">Nb. de lots</h4>
+                    <table class="table table-bordered">
+                        <tbody>
+                            <thead>
+                                <tr>
+                                    <th class="span4"> Non fermés </th>
+                                    <td class="text-right">xxx</td>
+                                </tr>
+
+                                <tr>
+                                    <th class="span4">Fermés non envoyés</th>  
+                                    <td class="text-right">xxxx</td>  
+                                </tr>
+                            </thead>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+                <div class="span12">
+                    <h4 class="page-header">Détail des lots</h4>
+                    <table class="table table-bordered">
+                        <tbody>
+                            <thead>
+                                <tr>
+                                    <th class="span4">Nom</th>
+                                    <th class="span4">Indice</th>
+                                    <th class="span4">Etat</th>
+                                    <th class="span4">Début période </th>
+                                    <th class="span4">Fin période </th>
+                                    <th class="span4">Date ferm.pré</th>
+                                    <th class="span4">Data ferm.eff </th>
+                                    <th class="span4">DC</th>
+                                    <th class="span4">DC</th>
+                                    <th class="span4">HD inf</th>
+                                    <th class="span4">HD sup</th>
+                                    <th class="span4">Fin classement</th>
+                                    <th class="span4">Fin Emission</th>
+                                    <th class="span4">En erreur</th>
+                                </tr>
+                            </thead>
+
+                            <c:forEach var="compteur" items="#{beanInterface.ecc.compteursInter}">
+
+
+                                <tr> 
+                                    <td class="text-left"></td>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+                                    <td class="text-left">#{compteur.dc_iecc}</td> 
+                                    <td class="text-left">#{compteur.dc_recyclage}</td> 
+                                    <td class="text-left">#{compteur.dc_correlation}</td>                                 
+                                    <td class="text-left">#{compteur.dc_redistribution}</td>
+                                    <td class="text-left">#{compteur.dc_errone}</td> 
+                                    <td class="text-left">#{compteur.dc_elimine}</td> 
+                                    <td class="text-left">#{compteur.dc_divers}</td>  
+                                </tr>
+
+                            </c:forEach>
+
+
+
+                        </tbody>
+                    </table>
+                </div>
+
+        </h:panelGroup>   
+
+    </h:panelGroup>
+</ui:composition>

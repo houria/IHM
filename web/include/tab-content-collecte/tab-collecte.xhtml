@@ -1,0 +1,167 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+    <div class="tab-pane active" id="tabs-#{beanCollect.arborescence.getNomRacine()}">
+
+        <h4>#{beanCollect.arborescence.getNomRacine()}</h4>
+        <div class="row-fluid">
+            <div class="span12">
+                <h4 class="page-header">Machine de collecte</h4>
+                <table class="table table-bordered">
+                    <thead>
+
+
+                        <tr>
+                            <th class="span4"><i class="icon-tag"></i> Nom</th>
+                            <th class="span4"><i class="icon-exclamation-sign"></i> Etat</th> 
+                            <th class="span4"><i class="icon-check-empty"></i> Blocs recus (A)</th>                                    
+                            <th class="span4"><i class="icon-copy"></i> Fichiers recus (A) </th>     
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="text-right">#{beanCollect.bilanCollecte.nomMachine}</td>
+                            <td class="text-right">#{beanCollect.bilanCollecte.etatmachine}</td> 
+                            <td class="text-right">#{beanCollect.bilanCollecte.blocRecus}</td>                                    
+                            <td class="text-right">#{beanCollect.bilanCollecte.fichierRecus}</td>    
+                        </tr>
+
+
+
+                    </tbody>
+
+                </table>
+            </div>
+
+        </div>
+        <div class="row-fluid">
+
+            <div class="span8">
+                <h4 class="page-header">Nombre de sessions</h4>
+                <table class="table table-bordered">
+                    <thead>
+
+
+                        <tr>
+                            <th class="span4"> Session</th>
+                            <th class="span4"><i class="icon-retweet"></i> En cours</th> 
+                            <th class="span4"><i class="icon-minus-sign"></i> Arrêt</th>                                    
+                            <th class="span4"><i class="icon-warning-sign"></i> Essai/Erreur</th>     
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="text-left">DC</td>
+                            <td class="text-right"><span class="badge badge-success">#{beanCollect.countEECSessionNormal()}</span></td> 
+                            <td class="text-right"><span class="badge badge-important">#{beanCollect.countEECSessionArret()}</span></td>                                    
+                            <td class="text-right"><span class="badge badge-warning">#{beanCollect.countEECSessionEssaie()}</span></td>    
+                        </tr>
+
+
+
+                    </tbody>
+
+                </table>
+            </div>
+
+            <div class="span4">
+                <h4 class="page-header">Nombre de liaison</h4>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th class="span4">Liaisons</th>
+                            <th class="span4"><i class="icon-ok"></i>OK</th>
+                            <th class="span4"><i class="icon-remove"></i>HS</th>      
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr>             
+                            <td class="text-right">Normale</td> 
+                            <td class="text-right"><span class="badge badge-success">#{beanCollect.countEECLiaisonNormal()}</span></td>                                    
+                            <td class="text-right"><span class="badge badge-important">#{beanCollect.countEECLiaisonHSNormal()}</span></td>    
+                        </tr>
+                        <tr>             
+                            <td class="text-right">Secours</td> 
+                            <td class="text-right"><span class="badge badge-success">#{beanCollect.countEECLiaisonSecours()}</span></td>                                    
+                            <td class="text-right"><span class="badge badge-important">#{beanCollect.countEECLiaisonHSSecours()}</span></td>    
+                        </tr>
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div class="span6">
+                <h4 class="page-header">EEC fil de l'eau</h4>
+                <table class="table table-bordered">
+                    <tbody>
+                        <tr>
+                            <td class="text-left">Nb.blocs recus (A)</td>
+                            <td class="span1 text-center">#{beanCollect.bilanCollecte.blocRecus}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">Nb.blocs rejetés (A)</td>
+                            <td class="span1 text-center">#{beanCollect.bilanCollecte.blocRejetes}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">Nb.blocs perdus (A)</td>
+                            <td class="span1 text-center">#{beanCollect.bilanCollecte.blocPerdus}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="span6">
+                <h4 class="page-header">EEC fichiers</h4>
+                <table class="table table-bordered">
+                    <tbody>
+                        <tr>
+                            <td class="text-left">Nb.fichiers recus (A)</td>
+                            <td class="span1 text-center">#{beanCollect.bilanCollecte.fichierRecus}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">Nb.fichiers rejetés (A)</td>
+                            <td class="span1 text-center">#{beanCollect.bilanCollecte.fichierRejetes}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div class="span6">
+                <h4 class="page-header">Nbre total de blocs envoyés à</h4>
+                <table class="table table-bordered">
+                    <tbody>
+                        <tr>
+                            <td class="text-left">Archivage (A)</td>
+                            <td class="span1 text-center">#{beanCollect.bilanCollecte.blocVersArch}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">Traitement(A)</td>
+                            <td class="span1 text-center">#{beanCollect.bilanCollecte.blocVersTrait}</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="span6">
+                <h4 class="page-header">Nbre total de fichiers envoyés à</h4>
+                <table class="table table-bordered">
+                    <tbody>
+                        <tr>
+                            <td class="text-left">Archivage (A)</td>
+                            <td class="span1 text-center">#{beanCollect.bilanCollecte.fichierVersArch}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">Traitement(A)</td>
+                            <td class="span1 text-center">#{beanCollect.bilanCollecte.fichierVersTrait}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</ui:composition>
+

@@ -1,0 +1,131 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <h:panelGroup class="tab-pane" id="tabs-eec" layout="block">
+        <h:panelGroup id="tabs-eec-panel">
+
+            <div class="row-fluid">
+                <div class="span12">
+
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr> 
+                                <td class="span4">Libelle </td>
+                                <td class="span2 text-center">#{beanTraitement.eec.bilanRequete.libelle}</td>
+
+                            </tr>
+                            <tr>
+                                <td class="span4">Type EEC</td>
+                                <td class="span2 text-center">#{beanTraitement.eec.bilanRequete.typeEEC}</td>
+                                <th class="span4">Type traitement</th>
+                                <td class="span2 text-center">#{beanTraitement.eec.bilanRequete.typeTraitement}</td>
+                            </tr>  
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+            <div class="row-fluid">
+
+                <div class="span6">
+                    <h4 class="page-header">Un titre</h4>
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="span4">Nb.blocs identifiés (A)</td>
+                                <td class="span2 text-right">#{beanTraitement.eec.bilanTrait.nbBlocIdentifies}</td>  
+
+                            </tr>
+
+                            <tr> 
+                                <td class="span4">Nb.blocs rejetés (S)</td>
+                                <td class="span2 text-right">#{beanTraitement.eec.bilanTrait.nbBlocRejetés}</td>    
+                            </tr>
+                        </tbody> 
+                    </table>
+                    <table class="table table-bordered">
+                        <tbody>    
+                            <tr>             
+                                <td class="span4">Volume de données identifiés(Ko)</td> 
+                                <td class="span2 text-right">#{beanTraitement.eec.bilanTrait.volumeDonneesIndetifies}</td>                                    
+
+                            </tr>
+                            <tr>             
+                                <td class="span4">Nb.d'octets rejetés (S)</td> 
+                                <td class="span2 text-right">#{beanTraitement.eec.bilanTrait.nbOctetsRejetes}</td>                                    
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="span6">
+                    <h4 class="page-header">Nombre total de DC envoyés à :</h4>
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="span4">Identifie</td>
+                                <td class="span2 text-right">#{beanTraitement.totalDCIdentifie}</td> 
+                            </tr>
+                            <tr>
+                                <td class="span4">Distribution (D)</td>
+                                <td class="span2 text-right">#{beanTraitement.totalDCDistribution}</td>  
+
+                            </tr>
+
+                            <tr> 
+                                <td class="span4">Erronés (D)</td>
+                                <td class="span2 text-right">#{beanTraitement.totalDCErrone}</td>    
+                            </tr>
+                            <tr>
+                                <td class="span4">Eliminés (D)</td>
+                                <td class="span2 text-right">#{beanTraitement.totalDCElimine}</td>
+                            </tr>
+
+                            <tr>  
+                                <td class="span4">Divers (D)</td> 
+                                <td class="span2 text-right">#{beanTraitement.totalDCDivers}</td>                                    
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="span12">
+                    <h4 class="page-header">Nombre de DC par cas d'articles envoyés à :</h4>
+                    <table class="table table-bordered">
+                        <tbody>
+                            <thead>
+                                <tr>
+                                    <th class="span4">Cas</th>
+                                    <th class="span4">Identifiés</th>
+                                    <th class="span4">Distribution </th>
+                                    <th class="span4">Erronés </th>
+                                    <th class="span4">Eliminés </th>
+                                    <th class="span4">Divers</th>
+                                </tr>
+
+
+                            </thead>
+
+                            <c:forEach var="compteur" items="#{beanTraitement.eec.compteurs}">
+                                <tr> 
+                                    <td class="text-left">#{compteur.cas}</td>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+                                    <td class="text-left">#{compteur.dc_identifier}</td>    
+                                    <td class="text-left">#{compteur.dc_distribution}</td>
+                                    <td class="text-left">#{compteur.dc_errone}</td> 
+                                    <td class="text-left">#{compteur.dc_elimine}</td> 
+                                    <td class="text-left">#{compteur.dc_divers}</td>  
+                                </tr>
+                            </c:forEach>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </h:panelGroup>
+    </h:panelGroup>
+
+</ui:composition>
+

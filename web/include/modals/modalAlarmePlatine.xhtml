@@ -1,0 +1,95 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+
+
+    <h:panelGroup layout="block" id="modal-alarme-platine" class="modal hide customeModal">
+	<h:form id="contenaire-alarmes-platine">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h4>Alarmes platine</h4>
+        </div>
+
+        <div class="modal-body">
+                <table class="table table-condensed span11">
+
+
+                    <thead>
+                        <tr>
+                            <th class="text-center">Date</th>
+                            <th class="text-center">Urgence</th>
+                            <th class="text-center">Module</th>
+                            <th class="text-center">Source</th>
+                            <th class="text-center">Type EEC</th>
+                            <th class="text-center">Zone géo</th>
+                            <th class="text-center">Libelle</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <c:forEach var="alarme" items="#{beanDashbord.alarmes}">
+                            <tr>
+                                <td class="text-left">#{alarme.date.toString()}</td>
+                                <td class="text-left">#{alarme.urgence}</td>
+                                <td class="text-left">#{alarme.module}</td>
+                                <td class="text-left">#{alarme.type_eec}</td>
+                                <td class="text-left">#{alarme.source}</td>
+                                <td class="text-left">#{alarme.zone}</td>
+                                <td class="text-left">#{alarme.libelle}</td>
+                            </tr>
+                        </c:forEach>
+
+                    </tbody>
+
+                </table>
+        </div>
+
+        <div class="modal-footer">
+            <h:form id="forme_pagination">
+                <h:panelGroup rendered="#{beanDashbord.nbrPage gt 1}" layout="block" class="pagination pagination-centered">
+                    <ul>
+                        <li>
+                            <h:commandLink rendered="#{beanDashbord.currentPage gt 1}" value="Pre">
+                                <f:ajax listener="#{beanDashbord.doPrecedent()}" execute="forme_pagination" render=":contenaire-alarmes-platine"/>
+                            </h:commandLink>
+                        </li>
+                        <c:forEach var="i" begin="1" end="#{beanDashbord.nbrPage}">
+                            <li class="#{beanDashbord.currentPage eq i ? 'active':''}">
+                                <h:commandLink value="#{i}">
+                                    <f:ajax listener="#{beanDashbord.setCurrentPage(i)}" execute="forme_pagination" render=":contenaire-alarmes-platine"/>
+                                s</h:commandLink>
+                            </li>
+                        </c:forEach>
+                        <li>
+                            <h:commandLink rendered="#{beanDashbord.currentPage lt beanDashbord.nbrPage}" value="Sui">
+                                <f:ajax listener="#{beanDashbord.doSuivant()}" execute="forme_pagination" render=":contenaire-alarmes-platine"/>
+                            </h:commandLink>
+                        </li>
+                    </ul>
+                </h:panelGroup>
+            </h:form>
+            
+            
+   
+
+            <div>
+                <button class="btn btn-danger" data-dismiss="modal"><i class="icon-remove"></i> Fermer</button>
+
+               
+                    <h:commandButton action="#{beanDashbord.doExportAlarmesCSV()}" class="btn btn-success" value="Exporter CSV"></h:commandButton>
+                
+
+               
+                    <h:commandButton action="#{beanDashbord.doExportAlarmesPDF()}" class="btn btn-success" value="Exporter PDF"></h:commandButton>
+           
+            </div>
+
+        </div>
+</h:form>
+    </h:panelGroup>
+
+</ui:composition>

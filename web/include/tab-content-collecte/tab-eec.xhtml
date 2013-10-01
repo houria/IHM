@@ -1,0 +1,146 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <h:panelGroup class="tab-pane" id="tabs-eec" layout="block">
+        <h:panelGroup id="tabs-eec-panel">
+            <h4>#{beanCollect.eec.eec}</h4>
+            <div class="row-fluid">
+                <div class="span6">
+
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="text-left">Libellé</td>
+                                <td class="span1 text-center">#{beanCollect.eec.bilanRequete.libelle}</td>
+                            </tr>           
+                            <tr>
+                                <td class="text-left">Machine de collecte</td>
+                                <td class="span1 text-center">#{beanCollect.eec.bilanRequete.couple}</td>
+                            </tr> 
+                        </tbody>
+                    </table>
+                </div>
+                <div class="span6">
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="text-left">Type EEC</td>
+                                <td class="span1 text-center">#{beanCollect.eec.bilanRequete.typeEEC}</td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">Protocole</td>
+                                <td class="span1 text-center">#{beanCollect.eec.bilanRequete.protocole}</td>
+                            </tr> 
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+            <div class="row-fluid">
+                <div class="span6">
+                    <h4 class="page-header">Liaisons</h4>
+                    <table class="table table-bordered">
+                        <tbody>
+                            <thead>
+
+                                <tr>             
+                                    <th class="span4">Normale</th> 
+                                    <td class="text-right"><span class="badge badge-success">#{beanCollect.eec.etatLiaisonNormal}</span></td>                                       
+                                </tr>
+                                <tr>             
+                                    <th class="span4">Secours</th> 
+                                    <td class="text-right"><span class="badge badge-success">#{beanCollect.eec.etatLisaisonSecours}</span></td>                                    
+                                </tr>
+
+                            </thead>
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="span6">
+                    <h4 class="page-header">Sessions</h4>
+                    <table class="table table-bordered">
+                        <tbody>
+                            <thead>
+                                <tr>
+                                    <th class="span4"> Session</th>
+                                    <th class="span4">Etat</th>    
+                                </tr>
+                                <tr>
+                                    <td class="text-left">DC</td>
+                                    <td class="text-right"><span class="badge badge-success">#{beanCollect.eec.etatSession}</span></td> 
+                                </tr>
+
+                            </thead>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row-fluid">
+                <div class="span6">
+                    <h4 class="page-header">Nombre de fichiers</h4>
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="text-left">Reçus (A)</td>
+                                <td class="span1 text-center">#{beanCollect.eec.bilanColl.fichierRecus}</td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">Rejetés (A)</td>
+                                <td class="span1 text-center">#{beanCollect.eec.bilanColl.fichierRejetes}</td>
+                            </tr> 
+                        </tbody>
+                    </table>
+                </div>
+                <div class="span6">
+                    <h4 class="page-header">Taux fichiers (%)</h4>
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="text-left">Rejetés (A)</td>
+                                <td class="span1 text-center">#{beanCollect.eec.tauxFichRejete}</td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">Doublons</td>
+                                <td class="span1 text-center">#{beanCollect.eec.doublons}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row-fluid">
+                <div class="span6">
+                    <h4 class="page-header">Données reçues</h4>
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="text-left">Volume (en Ko)(S)</td>
+                                <td class="span1 text-center">#{beanCollect.eec.bilanColl.volumeRecus}</td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">Débit (en Ko/s)(S)</td>
+                                <td class="span1 text-center">#{beanCollect.eec.debit}</td>
+                            </tr> 
+                        </tbody>
+                    </table>
+                </div>
+                <div class="span6">
+                    <h4 class="page-header">Blocs Emis</h4>
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="text-left">Blocs vers traitement</td>
+                                <td class="span1 text-center">#{beanCollect.eec.blocEmisTrait}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </h:panelGroup>
+    </h:panelGroup>
+
+</ui:composition>
+

@@ -1,0 +1,56 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <h:panelGroup class="tab-pane" id="tabs-group-eec" layout="block">
+        <h:panelGroup id="tabs--group-eec-panel">
+
+            <div class="row-fluid">
+
+                <div class="span6">
+
+                    <table class="table table-bordered">
+                        <tbody>
+                            <thead>
+                                <tr>
+                                    <td class="span4">Nb.blocs identifiés (A)</td>
+                                    <td class="text-right">#{beanTraitement.countSubEECBlocIdentifie()}</td>  
+
+                                </tr>
+                                <tr>
+                                    <td class="span4">Volume de données identifiés (Mo)(S)</td>
+                                    <td class="text-right">#{beanTraitement.countSubEECVolumeDonneeIdentifie()}</td>  
+
+                                </tr>
+
+                            </thead>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="span6">
+
+                    <table class="table table-bordered">
+                        <tbody>
+                            <thead>
+                                <tr> 
+                                    <td class="span4">Nb.blocs rejetés (S)</td>
+                                    <td class="text-right">#{beanTraitement.countSubEECBlocRejete()}</td>    
+                                </tr>
+                                <tr>             
+                                    <td class="span4">Nb.d'octets rejetés (S)</td> 
+                                    <td class="text-right">#{beanTraitement.countSubEECOctetRejete()}</td>                                    
+
+                                </tr>
+
+                            </thead>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </h:panelGroup>
+    </h:panelGroup>
+
+</ui:composition>
+

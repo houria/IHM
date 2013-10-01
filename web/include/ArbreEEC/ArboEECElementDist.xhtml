@@ -1,0 +1,61 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <li class="subTab sub_#{parent.getNomRacine()} niv#{niveau}">
+        <a class="aGroupeEEC" href="#tabs-groupe-eec">
+            <i class="icon-folder-close expende" data-target=".sub_#{node.getNomRacine()}"></i>
+            #{node.getNomRacine()}
+        </a>
+        <h:form id="form_groupe_#{node.getNomRacine()}" style="display: none">
+            <h:commandButton  style="display: none">
+                <f:ajax listener="#{beanDistribution.setCurrentGroupeEEC(node.getNomRacine())}" onevent="onSuccessGroup" execute="form_groupe_#{node.getNomRacine()}" render=":tabs-group-eec"/>
+            </h:commandButton>
+        </h:form>
+
+        <c:forEach var="fils" items="#{node.getFils()}">
+            <ui:include src="ArboEECElementDist.xhtml">
+                <ui:param name="parent" value="#{node}" />
+                <ui:param name="node" value="#{fils}" />
+                <ui:param name="niveau" value="#{niveau+1}" />
+            </ui:include>
+        </c:forEach>
+
+        <c:forEach var="eec" items="#{node.getEccs()}">
+
+            <li class="subTab sub_#{node.getNomRacine()} niv#{niveau}">
+                <a href="#tabs-eec">
+                    <i class="icon-file"></i>
+                    #{eec.eec}
+                </a>
+                <h:form id="form_#{eec.eec}" style="display: none">
+                    <h:commandButton  style="display: none">
+                        <f:ajax listener="#{beanDistribution.setCurrentEEC(eec.eec)}" onevent="onSuccess" execute="form_#{eec.eec}" render=":tabs-eec"/> 
+                    </h:commandButton>
+                </h:form>
+            </li>
+
+        </c:forEach>
+    </li>
+    <script type="text/javascript">
+        function onSuccess(data) {
+            if (data.status == 'success') {
+                $("#tabs-eec").addClass("active");
+                $("#tabs-group-eec").removeClass("active");
+                $("#tabs-#{beanDistribution.arborescence.getNomRacine()}").removeClass("active");
+
+            }
+        }
+        function onSuccessGroup(data) {
+            if (data.status == 'success') {
+                $("#tabs-group-eec").addClass("active");
+                $("#tabs-eec").removeClass("active");
+                $("#tabs-#{beanDistribution.arborescence.getNomRacine()}").removeClass("active");
+
+            }
+        }
+    </script>
+</ui:composition>
+

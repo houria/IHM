@@ -1,0 +1,149 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+    <div class="tab-pane active" id="tabs-#{beanInterface.arborescence.getNomRacine()}">
+        <div class="row-fluid">
+            <div class="span10">
+                <h4 class="page-header">Nombre d'ECC</h4>
+                <table class="table table-bordered">
+                    <tbody>
+                        <thead>
+                            <tr>
+                                <th class="span4"> Total </th>
+                                <td class="text-right">xxx</td>
+                            </tr>
+                            <tr>
+                                <th class="span4">ECC fil de l'eau</th>  
+                                <td class="text-right">xxxx</td>  
+                            </tr>
+                            <tr>
+                                <th class="span4">ECC par lots</th>
+
+                                <td class="text-right">xxxx</td> 
+                            </tr>
+                            <tr>
+                                <th class="span4">Avec liaison HS</th>
+
+                                <td class="text-right">xxxx</td> 
+                            </tr>
+                        </thead>
+
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+        <div class="row-fluid">
+
+            <div class="span5">
+                <h4 class="page-header">Données en entrée</h4>
+                <table class="table table-bordered">
+                    <tbody>
+                        <thead>
+                            <tr>
+                                <th class="span4"> Volume (Mo) </th>
+                                <td class="text-right">#{beanInterface.bilanInterface.volumeEntrant}</td>
+                            </tr>
+
+                            <tr>
+                                <th class="span4">Nb. DC</th>  
+                                <td class="text-right">#{beanInterface.bilanInterface.dcEntrant}</td>  
+                            </tr>
+                            <tr>
+                                <th class="span4">Débit en (Ko/s)</th>
+
+                                <td class="text-right">#{beanInterface.bilanInterface.debitGDonneeEntrant}</td> 
+                            </tr>
+                            <tr>
+                                <th class="span4">Débit en (DC/s)</th>
+
+                                <td class="text-right">#{beanInterface.bilanInterface.debitGDCEntrant}</td> 
+                            </tr>
+
+                        </thead>
+
+                    </tbody>
+                </table>
+                <h4 class="page-header">Nb. de lots</h4>
+                <table class="table table-bordered">
+                    <tbody>
+                        <thead>
+                            <tr>
+                                <th class="span4"> Non fermés </th>
+                                <td class="text-right">#{beanInterface.bilanInterface.nbLotNonFermeGlobal}</td>
+                            </tr>
+
+                            <tr>
+                                <th class="span4">Fermés non envoyés</th>  
+                                <td class="text-right">#{beanInterface.bilanInterface.nbLotFermeNonEnvoyeGlobal}</td>  
+                            </tr>
+                        </thead>
+
+                    </tbody>
+                </table>
+                <table class="table table-bordered">
+                    <tbody>
+                        <thead>
+                            <tr>
+                                <th class="span4">Nb.DC hors-délai </th>
+                                <td class="text-right">#{beanInterface.bilanInterface.nbDcHorsDelai}</td>
+                            </tr>
+                        </thead>
+
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="span5">
+                <h4 class="page-header">Données en sortie</h4>
+                <table class="table table-bordered">
+                    <tbody>
+                        <thead>
+                            <tr>
+                                <th class="span4"> Volume (Mo) </th>
+                                <td class="text-right">#{beanInterface.bilanInterface.volumeSortant}</td>
+                            </tr>
+
+                            <tr>
+                                <th class="span4">Nb. DC</th>  
+                                <td class="text-right">#{beanInterface.bilanInterface.dcSortant}</td>  
+                            </tr>
+                            <tr>
+                                <th class="span4">Débit en (Ko/s)</th>
+
+                                <td class="text-right">#{beanInterface.bilanInterface.debitGDonneeSortant}</td> 
+                            </tr>
+                            <tr>
+                                <th class="span4">Débit en (DC/s)</th>
+
+                                <td class="text-right">#{beanInterface.bilanInterface.debitGDCSortant}</td> 
+                            </tr>
+                            <tr>
+                                <th class="span4">Nb. de fichiers</th>  
+                                <td class="text-right">#{beanInterface.bilanInterface.nbFichierSortant}</td>  
+                            </tr>
+                            <tr>
+                                <th class="span4">Nb. de messages</th>  
+                                <td class="text-right">#{beanInterface.bilanInterface.nbMessageSortant}</td>  
+                            </tr>
+
+                            <tr>        
+                                <th class="span4">Nb. DC détruit</th>  
+                                <td class="text-right">#{beanInterface.bilanInterface.nbDcDetruit}</td>  
+                            </tr>
+                            <tr>
+                                <th class="span4">Nb. DC inattendus</th>  
+                                <td class="text-right">#{beanInterface.bilanInterface.nbDCInattendu}</td>  
+                            </tr>
+
+
+                        </thead>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</ui:composition>
+

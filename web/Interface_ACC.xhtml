@@ -1,0 +1,869 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html">> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html">> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html">> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html"
+                             xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                             xmlns:ui="http://xmlns.jcp.org/jsf/facelets"> <!--<![endif]-->
+    <h:head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <title>Interfaces</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1" />    
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,400italic,700,700italic" />       
+        <link rel="stylesheet" href="css/bootstrap.css" />
+        <link rel="stylesheet" href="css/plugins.css" />
+        <link rel="stylesheet" href="css/main.css" />
+        <style>
+            .subTab{
+                height: 0px;
+                overflow: hidden;
+                position: relative;
+                transition: height 0.35s ease 0s;
+            }
+            .subTab.visible{
+                height: auto;
+            }
+            .niv1{
+                padding-left: 10px;
+            }
+            .niv2{
+                padding-left: 20px;
+            }
+            .niv3{
+                padding-left: 30px;
+            }
+            .niv4{
+                padding-left: 40px;
+            }
+        </style>
+        <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+        
+        <script src="js/vendor/jquery-1.8.3.min.js"></script>
+        <script src="js/vendor/bootstrap.min.js"></script> 
+        <script type="text/javascript">
+            $(function() {
+                
+                
+                $("#interface-tabs a").click(function(e) {
+                    e.preventDefault();
+                    $(this).tab("show");
+                });
+                
+                $("#interface-tabs li i.expende").click(function(e){
+                    var target = $(this).data('target');
+                    toggleVisible(target,$(this));
+                    
+                });
+                
+                function toggleVisible(target, parent)
+                {
+                    var classes = $(""+target).attr("class").split(/\s+/);;
+                    var index = jQuery.inArray("visible", classes);
+                    if(index==-1)
+                        {
+                            $(""+target).addClass("visible");
+                            parent.addClass('icon-folder-open');
+                            parent.removeClass('icon-folder-close');
+                        }
+                    else
+                        {
+                            parent.addClass('icon-folder-close');
+                            parent.removeClass('icon-folder-open');
+                            $(""+target).removeClass("visible");
+                            var sub = $(""+target+" i[data-target]");
+                            sub.addClass('icon-folder-close');
+                            sub.removeClass('icon-folder-open');
+                            $.each(sub,function(){
+                                removeVisible($(this).data('target'));
+                            });
+                        }
+                }
+                
+                function removeVisible(target)
+                {
+                    $(""+target).removeClass("visible");
+                    var sub = $(""+target+" i[data-target]");
+                    sub.addClass('icon-folder-close');
+                    sub.removeClass('icon-folder-open');
+                    $.each(sub,function(){
+                        removeVisible($(this).data('target'));
+                        $(this).addClass('icon-folder-close');
+                        $(this).removeClass('icon-folder-open');
+                    });
+                    
+                }
+                
+
+            })
+        </script>
+        <script src="js/plugins.js"></script> 
+        <script src="js/main.js"></script>
+        
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    </h:head>
+    <h:body>
+
+        <div id="page-container">
+
+            <!-- la barre de navigation -->
+            <header class="navbar navbar-inverse">
+                <div class="navbar-inner remove-radius remove-box-shadow">
+                    <div class="container-fluid">
+                        <ul class="nav pull-right visible-phone visible-tablet">
+                            <li class="divider-vertical remove-margin"></li>
+                            <li> <a href="javascript:void(0)" data-toggle="collapse" data-target=".nav-collapse"> <i class="icon-reorder"></i> </a> </li>
+                        </ul>
+                        <a href="index.xhtml" class="brand"><img src="img/template/logo.png" alt="logo" /></a>
+                        <div id="loading" class="hide pull-left"><i class="icon-certificate icon-spin"></i></div>
+
+                        <ul id="widgets" class="nav pull-right">
+                            <li class="divider-vertical remove-margin"></li>
+
+                            <li class="dropdown dropdown-user"> <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-lock"></i><b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li> <a href="page_login.php"><i class="icon-lock"></i> Fermer la session</a> </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </header>
+            <!-- ***************************************************** -->
+            <div id="inner-container">
+                <aside id="page-sidebar" class="nav-collapse collapse">
+
+                    <nav id="primary-nav">
+                        <ul>
+                            <li> <a href="dashbord.xhtml"><i class="icon-dashboard"></i>Platine</a></li>
+                            <li> <a href="collecte.xhtml" ><i class="icon-copy"></i>Collecte</a></li>
+                            <li> <a href="traitement.xhtml"><i class="icon-edit"></i>Traitement</a> </li>                          
+                            <li> <a href="distribution.xhtml"><i class="icon-upload-alt"></i>Distribution</a> </li>
+                            <li> <a href="#" class="active"><i class="icon-desktop"></i>Interfaces</a> </li>
+                        </ul>
+                    </nav>
+                </aside>
+                <div id="page-content">
+
+                    <ul id="nav-info" class="clearfix">
+                        <li><a href="index.php"><i class="icon-home"></i></a></li>
+                        <li class="active"><a href="">Interfaces</a></li>
+                    </ul>
+                    <ul class="nav-dash">
+                        <li> <a href="javascript:void(0)" data-toggle="tooltip" title="Total Alarmes "> <i class="icon-bell"></i> <span class="badge badge-important">3</span> </a> </li>
+                       
+                        <li> <a href="javascript:void(0)" data-toggle="tooltip" title="Platine"> <i class="icon-dashboard"></i> <span class="badge badge-important">3</span> </a> </li>
+                        <li> <a href="javascript:void(0)" data-toggle="tooltip" title="Collecte"> <i class="icon-copy"></i> <span class="badge badge-important">3</span> </a> </li>
+                        <li> <a href="javascript:void(0)" data-toggle="tooltip" title="Traitement"> <i class="icon-edit"></i> <span class="badge badge-important">5</span> </a> </li>
+                        <li> <a href="javascript:void(0)" data-toggle="tooltip" title="Distribution"> <i class="icon-upload-alt"></i> <span class="badge badge-important">3</span></a> </li>
+                        <li> <a href="#modal-alarme-interface" data-toggle="modal" title="Interface"> <i class="icon-desktop"></i> <span class="badge badge-important">#{beanInterface.alarmes.size()}</span></a> </li>
+                    </ul>
+                    <div class="row-fluid">
+                        <div class="tabs-left">
+                            <ul class="nav nav-tabs" id="example-tabs">
+
+                            </ul>
+                            <div class="tab-content">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row-fluid tabs-left">
+                   
+                        <ul id="interface-tabs" class="nav nav-tabs span3">
+
+                            <li class="active">
+                                <a href="#tabs-interface"><i class="icon-folder-close expende" data-target=".sub_interface"></i>Interfaces</a>
+                                <li class="subTab sub_interface niv1"><a href="#tabs-acc"><i class="icon-folder-close expende" data-target=".sub_interface_ACC"></i>ACC</a></li>
+                                <li class="subTab sub_interface_ACC niv2"><a href="#tabs-sous-acc01"><i class="icon-file"></i> DWH_ACC_01</a></li>
+                                <li class="subTab sub_interface_ACC niv2"><a href="#tabs-sous-acc02"><i class="icon-file"></i> DWH_ACC_02</a></li>
+                                <li class="subTab sub_interface_ACC niv2"><a href="#tabs-sous-accomy01"><i class="icon-file"></i> DWH_ACC_OMY_01</a></li>
+                                
+                                
+                                <li class="subTab sub_interface niv1"><a href="#tabs-accg"><i class="icon-folder-close expende" data-target=".sub_interface_ACCG"></i> ACCG</a></li>
+                                <li class="subTab sub_interface_ACCG niv2"><a href="#tabs-sous-accg03"><i class="icon-file"></i> DWH_ACCG_03</a></li>
+                                <li class="subTab sub_interface_ACCG niv2"><a href="#tabs-sous-accg04"><i class="icon-file"></i> DWH_ACCG_04</a></li>
+                                <li class="subTab sub_interface_ACCG niv2"><a href="#tabs-sous-accgomy01"><i class="icon-file"></i> DWH_ACCG_OMY_01</a></li>
+                                <li class="subTab sub_interface_ACCG niv2"><a href="#tabs-sous-accgomy02"><i class="icon-file"></i> DWH_ACCG_OMY_02</a></li>
+                                
+                                
+                                <li class="subTab sub_interface niv1"><a href="#tabs-crs1_air"><i class="icon-folder-close expende" data-target=".sub_interface_CRS1_AIR"></i> CRS1_AIR</a></li>
+                                <li class="subTab sub_interface_CRS1_AIR niv2"><a href="#tabs-sous-tn1crs1air01"><i class="icon-file"></i> TN1CRS1_AIR_01</a></li>
+                                
+                                <li class="subTab sub_interface niv1"><a href="#tabs-crs1_ccn"><i class="icon-folder-close expende" data-target=".sub_interface_CRS1_CCN"></i> CRS1_CCN</a></li>
+                                <li class="subTab sub_interface_CRS1_CCN niv2"><a href="#tabs-sous-tn2crs1ccn01"><i class="icon-file"></i> TN2CRS1_CCN_01</a></li>
+                                
+                                
+                                <li class="subTab sub_interface niv1"><a href="#tabs-crs1_sdp"><i class="icon-folder-close expende" data-target=".sub_interface_CRS1_SDP"></i> CRS1_SDP</a></li>
+                                <li class="subTab sub_interface_CRS1_SDP niv2"><a href="#tabs-sous-tn1crs1sdp01"><i class="icon-file"></i> TN1CRS1_SDP_01</a></li>
+                                
+                                
+                                <li class="subTab sub_interface niv1"><a href="#tabs-crs2_air"><i class="icon-folder-close expende" data-target=".sub_interface_CRS2_AIR"></i> CRS2_AIR</a></li>
+                                <li class="subTab sub_interface_CRS2_AIR niv2"><a href="#tabs-sous-tn2crs2air01"><i class="icon-file"></i> TN2CRS2_AIR_01</a></li>
+                                
+                                
+                                <li class="subTab sub_interface niv1"><a href="#tabs-crs2_ccn"><i class="icon-folder-close expende" data-target=".sub_interface_CRS2_CCN"></i> CRS2_CCN</a></li>
+                                <li class="subTab sub_interface_CRS2_CCN niv2"><a href="#tabs-sous-tn2crs2ccn01"><i class="icon-file"></i> TN2CRS2_CCN_01</a></li>
+                                
+                                
+                                <li class="subTab sub_interface niv1"><a href="#tabs-crs2_sdp"><i class="icon-folder-close expende" data-target=".sub_interface_CRS2_SDP"></i> CRS2_SDP</a></li>
+                                <li class="subTab sub_interface_CRS2_SDP niv2"><a href="#tabs-sous-tn2crs2ccn02"><i class="icon-file"></i> TN2CRS2_SDP_02</a></li>
+                                
+                                
+                                
+                                <li class="subTab sub_interface niv1"><a href="#tabs-dnxms"><i class="icon-folder-close expende" data-target=".sub_interface_DNXMS"></i>DNXMS</a></li>
+                                <li class="subTab sub_interface_DNXMS niv2"><a href="#tabs-sous-dnxms02"><i class="icon-file"></i> DNXMS_02</a></li>
+                                <li class="subTab sub_interface_DNXMS niv2"><a href="#tabs-sous-dnxms03"><i class="icon-file"></i> DNXMS_03</a></li>
+
+                                
+                                
+                                <li class="subTab sub_interface niv1"><a href="#tabs-dwhvoucher"><i class="icon-folder-close expende" data-target=".sub_interface_DWHVOUCHER"></i>DWHVOUCHER</a></li>
+                                <li class="subTab sub_interface_DWHVOUCHER niv2"><a href="#tabs-sous-dwhvoucheromy01"><i class="icon-file"></i> DWH_VOUCHER_OMY_01</a></li>
+                                <li class="subTab sub_interface_DWHVOUCHER niv2"><a href="#tabs-sous-dwhvoucheromy02"><i class="icon-file"></i> DWH_VOUCHER_OMY_02</a></li>
+                                <li class="subTab sub_interface_DWHVOUCHER niv2"><a href="#tabs-sous-dwhvoucheromy03"><i class="icon-file"></i> DWH_VOUCHER_OMY_03</a></li>
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                <li class="subTab sub_interface niv1"><a href="#tabs-dwsform"><i class="icon-folder-close expende" data-target=".sub_interface_DWS_FORM"></i>DWS_FORM</a></li>
+                                <li class="subTab sub_interface_DWS_FORM niv2"><a href="#tabs-sous-dwsform"><i class="icon-file"></i> DWS_FORM</a></li>
+                                <li class="subTab sub_interface_DWS_FORM niv2"><a href="#tabs-sous-dwsform02"><i class="icon-file"></i> DWS_FORM02</a></li>
+                                
+                                <li class="subTab sub_interface niv1"><a href="#tabs-hdtform"><i class="icon-folder-close expende" data-target=".sub_interface_HDT_FORM"></i> HDT_FORM</a></li>
+                                <li class="subTab sub_interface_HDT_FORM niv2"><a href="#tabs-sous-hdtform"><i class="icon-file"></i> HDT_FORM</a></li>
+                                
+                                
+                                <li class="subTab sub_interface niv1"><a href="#tabs-machdata"><i class="icon-folder-close expende" data-target=".sub_interface_MACH_DATA"></i> MACH_DATA</a></li>
+                                <li class="subTab sub_interface_MACH_DATA niv2"><a href="#tabs-sous-machdata01"><i class="icon-file"></i> MACH_DATA_01</a></li>
+                                
+                                
+                                <li class="subTab sub_interface niv1"><a href="#tabs-notiflcy"><i class="icon-folder-close expende" data-target=".sub_interface_NOTIF_LCY"></i> NOTIF_LCY</a></li>
+                                <li class="subTab sub_interface_NOTIF_LCY niv2"><a href="#tabs-sous-notiflcy01"><i class="icon-file"></i> NOTIF_LCY_01</a></li>
+                                <li class="subTab sub_interface_NOTIF_LCY niv2"><a href="#tabs-sous-notiflcy02"><i class="icon-file"></i> NOTIF_LCY_02</a></li>
+                       
+                                
+                                
+                                 <li class="subTab sub_interface niv1"><a href="#tabs-pps"><i class="icon-folder-close expende" data-target=".sub_interface_PPS"></i> PPS</a></li>
+                                <li class="subTab sub_interface_PPS niv2"><a href="#tabs-omy"><i class="icon-folder-close expende" data-target=".sub_interface_PPS_OMY"></i> OMY</a></li>
+                                <li class="subTab sub_interface_PPS_OMY niv3"><a href="#tabs-sous-dwhppsomy03"><i class="icon-file"></i> DWH_PPS_OMY_03</a></li>
+                                
+                                <li class="subTab sub_interface_PPS niv2"><a href="#tabs-ore"><i class="icon-folder-close expende" data-target=".sub_interface_PPS_ORE"></i> ORE</a></li>
+                                
+                                <li class="subTab sub_interface_PPS_ORE niv3"><a href="#tabs-sous-dwhppsore03"><i class="icon-file"></i> DWH_PPS_ORE_03</a></li>
+                                <li class="subTab sub_interface_PPS_ORE niv3"><a href="#tabs-sous-test"><i class="icon-file"></i> TEST</a></li>
+                                
+                                
+                                
+                                
+                                <li class="subTab sub_interface niv1"><a href="#tabs-supe"><i class="icon-folder-close expende" data-target=".sub_interface_SUPE"></i> SUPE</a></li>
+                                <li class="subTab sub_interface_SUPE niv2"><a href="#tabs-dwhomy"><i class="icon-folder-close expende" data-target=".sub_interface_DWH_OMY"></i> DWH_OMY</a></li>
+                                <li class="subTab sub_interface_DWH_OMY niv3"><a href="#tabs-sous-dwhomy01"><i class="icon-file"></i> DWH_OMY_01</a></li>
+                                
+                                <li class="subTab sub_interface_SUPE niv2"><a href="#tabs-dwhore"><i class="icon-folder-close expende" data-target=".sub_interface_DWH_ORE"></i> DWH_ORE</a></li>
+                                
+                                <li class="subTab sub_interface_DWH_ORE niv3"><a href="#tabs-sous-dwhore01"><i class="icon-file"></i> DWH_ORE_01</a></li>
+                                <li class="subTab sub_interface_DWH_ORE niv3"><a href="#tabs-sous-dwhore02"><i class="icon-file"></i> DWH_ORE_02</a></li>
+                                <li class="subTab sub_interface_DWH_ORE niv3"><a href="#tabs-sous-dwhore03"><i class="icon-file"></i> DWH_ORE_03</a></li>
+                        
+                                
+                                
+                                
+                                <li class="subTab sub_interface_SUPE niv2"><a href="#tabs-jupiterfiltreomy"><i class="icon-folder-close expende" data-target=".sub_interface_jupiter_filtre_omy"></i> JUPITER_FITRE_OMY</a></li>
+                                
+                                <li class="subTab sub_interface_jupiter_filtre_omy niv3"><a href="#tabs-sous-jupiteromyfilter01"><i class="icon-file"></i> JUPITER_OMY_FILTER_01</a></li>
+                               
+                                <li class="subTab sub_interface_SUPE niv2"><a href="#tabs-jupiteromy"><i class="icon-folder-close expende" data-target=".sub_interface_JUPITER_OMY"></i> JUPITER_OMY</a></li>
+                                
+                                <li class="subTab sub_interface_JUPITER_OMY niv3"><a href="#tabs-sous-jupiteromy02"><i class="icon-file"></i> JUPITER_OMY_02</a></li>
+                                <li class="subTab sub_interface_JUPITER_OMY niv3"><a href="#tabs-sous-jupiteromy03"><i class="icon-file"></i> JUPITER_OMY_03</a></li>
+                                <li class="subTab sub_interface_JUPITER_OMY niv3"><a href="#tabs-sous-jupiteromy04"><i class="icon-file"></i> JUPITER_OMY_04</a></li>
+                                
+                                 <li class="subTab sub_interface_SUPE niv2"><a href="#tabs-jupiterore"><i class="icon-folder-close expende" data-target=".sub_interface_JUPITER_ORE"></i> JUPITER_ORE</a></li>
+                                
+                                <li class="subTab sub_interface_JUPITER_ORE niv3"><a href="#tabs-sous-jupiterore01"><i class="icon-file"></i> JUPITER_ORE_01</a></li>
+                                <li class="subTab sub_interface_JUPITER_ORE niv3"><a href="#tabs-sous-jupiterore02"><i class="icon-file"></i> JUPITER_ORE_02</a></li>
+                                
+                                <li class="subTab sub_interface_SUPE niv2"><a href="#tabs-jupiterorefilter"><i class="icon-folder-close expende" data-target=".sub_interface_JUPITER_ORE_FILTER"></i> JUPITER_ORE_FILTER</a></li>
+                                
+                                <li class="subTab sub_interface_JUPITER_ORE_FILTER niv3"><a href="#tabs-sous-jupiterorefilter01"><i class="icon-file"></i> JUPITER_ORE_FILTER_01</a></li>
+                                
+                                     <li class="subTab sub_interface_SUPE niv2"><a href="#tabs-machmsc"><i class="icon-folder-close expende" data-target=".sub_interface_MACH_MSC"></i> MACH_MSC</a></li>
+                                
+                                <li class="subTab sub_interface_MACH_MSC niv3"><a href="#tabs-sous-machmsc01"><i class="icon-file"></i> MACH_MSC_01</a></li>
+                                <li class="subTab sub_interface_MACH_MSC niv3"><a href="#tabs-sous-machmsc02"><i class="icon-file"></i> MACH_MSC_02</a></li>
+                                
+                                
+                                
+                                 <li class="subTab sub_interface_SUPE niv2"><a href="#tabs-snpibadomy"><i class="icon-folder-close expende" data-target=".sub_interface_SNPI_BAD_OMY"></i>SNPI_BAD_OMY</a></li>
+                                
+                                <li class="subTab sub_interface_SNPI_BAD_OMY niv3"><a href="#tabs-sous-snpiomybad"><i class="icon-file"></i> SNPI_OMY_BAD</a></li>
+                                
+                                
+                                <li class="subTab sub_interface_SUPE niv2"><a href="#tabs-snpibadore"><i class="icon-folder-close expende" data-target=".sub_interface_SNPI_BAD_ORE"></i>SNPI_BAD_ORE</a></li>
+                                
+                                <li class="subTab sub_interface_SNPI_BAD_ORE niv3"><a href="#tabs-sous-snpibadore"><i class="icon-file"></i> SNPI_BAD_ORE</a></li>
+                                
+                                
+                                <li class="subTab sub_interface_SUPE niv2"><a href="#tabs-snpiomy01"><i class="icon-folder-close expende" data-target=".sub_interface_SNPI_OMY"></i>SNPI_OMY</a></li>
+                                
+                                <li class="subTab sub_interface_SNPI_OMY niv3"><a href="#tabs-sous-snpiomy01"><i class="icon-file"></i> SNPI_OMY_01</a></li>
+                                
+                                <li class="subTab sub_interface_SUPE niv2"><a href="#tabs-snpiore"><i class="icon-folder-close expende" data-target=".sub_interface_SNPI_ORE"></i>SNPI_ORE</a></li>
+                                
+                                <li class="subTab sub_interface_SNPI_ORE niv3"><a href="#tabs-sous-snpi01"><i class="icon-file"></i> SNPI_01</a></li>
+                                <li class="subTab sub_interface_SNPI_ORE niv3"><a href="#tabs-sous-snpi03"><i class="icon-file"></i> SNPI_03</a></li>
+                                
+                                 <li class="subTab sub_interface_SUPE niv2"><a href="#tabs-syniverse"><i class="icon-folder-close expende" data-target=".sub_interface_SYNIVERSE"></i>SYNIVERSE</a></li>
+                                
+                                <li class="subTab sub_interface_SYNIVERSE niv3"><a href="#tabs-sous-syniverse01"><i class="icon-file"></i> SYNIVERSE_01</a></li>
+                                <li class="subTab sub_interface_SYNIVERSE niv3"><a href="#tabs-sous-syniverse02"><i class="icon-file"></i> SYNIVERSE_02</a></li>
+                                
+                                <li class="subTab sub_interface niv1"><a href="#tabs-vol"><i class="icon-folder-close expende" data-target=".sub_interface_VOL"></i> VOL</a></li>
+                                <li class="subTab sub_interface_VOL niv2"><a href="#tabs-omy"><i class="icon-folder-close expende" data-target=".sub_interface_VOL_OMY"></i> OMY</a></li>
+                                <li class="subTab sub_interface_VOL_OMY niv3"><a href="#tabs-sous-dwhvolomy01"><i class="icon-file"></i> DWH_VOL_OMY_03</a></li>
+                                
+                                <li class="subTab sub_interface_VOL niv2"><a href="#tabs-ore"><i class="icon-folder-close expende" data-target=".sub_interface_VOL_ORE"></i> ORE</a></li>
+                                
+                                <li class="subTab sub_interface_VOL_ORE niv3"><a href="#tabs-sous-dwhvolore01"><i class="icon-file"></i> DWH_VOL_ORE_01</a></li>
+                                <li class="subTab sub_interface_VOL_ORE niv3"><a href="#tabs-sous-dwhvolore03"><i class="icon-file"></i> DWH_VOL_ORE_03</a></li>
+                                
+                                
+                                
+                                
+                                
+                          
+                                
+                                
+                                
+                                
+                                
+                                <li class="subTab sub_interface niv1"><a href="#tabs-echange"><i class="icon-folder-close expende" data-target=".sub_interface_echange"></i> echange</a></li>
+
+                                <li class="subTab sub_interface_echange niv2"><a href="#tabs-supervision"><i class="icon-folder-close expende" data-target=".sub_interface_echange_sup"></i> SUPERVISION</a></li>
+                                <li class="subTab sub_interface_echange_sup niv3"><a href="#tabs-dwhtran"><i class="icon-folder-close expende" data-target=".sub_interface_echange_sup_dwhtran"></i> DWHTran</a></li>
+                                <li class="subTab sub_interface_echange_sup_dwhtran niv4"><a href="#tabs-sous-dwhvoucher01"><i class="icon-file"></i> DWH_VOUCHER_01</a></li>
+                                <li class="subTab sub_interface_echange_sup_dwhtran niv4"><a href="#tabs-sous-dwhv01"><i class="icon-file"></i> DWH_V_01</a></li>
+                                
+                                 <li class="subTab sub_interface_echange_sup niv3"><a href="#tabs-voucher"><i class="icon-folder-close expende" data-target=".sub_interface_echange_sup_voucher"></i>VOUCHER</a></li>
+                                <li class="subTab sub_interface_echange_sup_voucher niv4"><a href="#tabs-sous-crsvoucher01"><i class="icon-file"></i> CRS_VOUCHER_01</a></li>
+                                <li class="subTab sub_interface_echange_sup_voucher niv4"><a href="#tabs-sous-crsvoucher02"><i class="icon-file"></i> CRS_VOUCHER_02</a></li>
+                                <li class="subTab sub_interface_echange_sup_voucher niv4"><a href="#tabs-sous-crsvoucher03"><i class="icon-file"></i> CRS_VOUCHER_03</a></li>
+
+                                
+                                
+                         
+                                             
+                                <li class="subTab sub_interface niv1"><a href="#tabs-qualif"><i class="icon-folder-close expende" data-target=".sub_interface_qualif"></i> qualif</a></li>
+
+                                <li class="subTab sub_interface_qualif niv2"><a href="#tabs-ftp"><i class="icon-folder-close expende" data-target=".sub_interface_qualif_ftp"></i> FTP</a></li>
+                                
+                                <li class="subTab sub_interface_qualif_ftp niv3"><a href="#tabs-sous-crsair01"><i class="icon-file"></i> CRS-AIR_01</a></li>
+                                <li class="subTab sub_interface_qualif_ftp niv3"><a href="#tabs-sous-crsccn01"><i class="icon-file"></i> CRS-CCN_01</a></li>
+                                <li class="subTab sub_interface_qualif_ftp niv3"><a href="#tabs-sous-crssdp01"><i class="icon-file"></i> CRS-SDP_01</a></li>
+                                <li class="subTab sub_interface_qualif_ftp niv3"><a href="#tabs-sous-volibill01"><i class="icon-file"></i> DWH_VOLIBILL_01</a></li>
+                                <li class="subTab sub_interface_qualif_ftp niv3"><a href="#tabs-sous-dwhvoucher03"><i class="icon-file"></i> DWH_VOUCHER_03</a></li>
+                                <li class="subTab sub_interface_qualif_ftp niv3"><a href="#tabs-sous-dwhvoucher04"><i class="icon-file"></i> DWH_VOUCHER_04</a></li>
+                                <li class="subTab sub_interface_qualif_ftp niv3"><a href="#tabs-sous-dwhvoucher05"><i class="icon-file"></i> DWH_VOUCHER_05</a></li>
+                                
+                                <li class="subTab sub_interface_qualif_ftp niv3"><a href="#tabs-sous-moctlv02"><i class="icon-file"></i> MOCTLV02</a></li>
+                                <li class="subTab sub_interface_qualif_ftp niv3"><a href="#tabs-sous-moctlv03"><i class="icon-file"></i> MOCTLV03</a></li>
+                                <li class="subTab sub_interface_qualif_ftp niv3"><a href="#tabs-sous-moctlv04"><i class="icon-file"></i> MOCTLV04</a></li>
+                                <li class="subTab sub_interface_qualif_ftp niv3"><a href="#tabs-sous-numcorrel01"><i class="icon-file"></i> NUM_CORREL01</a></li>
+                                <li class="subTab sub_interface_qualif_ftp niv3"><a href="#tabs-sous-recycleTLV01"><i class="icon-file"></i> RecycleTLV_01</a></li>
+                            </li>
+                            
+                            
+
+
+                        </ul>
+                      
+                        <div class="tab-content span8">
+
+
+                            <div class="tab-pane active" id="tabs-interface">
+
+                                <div id="faq-section3" class="accordion">
+                                    <div class="row-fluid">
+                                        <div class="span10">
+                                            <h4 class="page-header">Nombre d'ECC</h4>
+                                            <table class="table table-bordered">
+                                                <tbody>
+                                                    <thead>
+                                                        <tr>
+                                                            <th class="span4"> Total </th>
+                                                            <td class="text-right">xxx</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th class="span4">ECC fil de l'eau</th>  
+                                                            <td class="text-right">xxxx</td>  
+                                                        </tr>
+                                                        <tr>
+                                                            <th class="span4">ECC par lots</th>
+                                                                                               
+                                                            <td class="text-right">xxxx</td> 
+                                                        </tr>
+                                                          <tr>
+                                                            <th class="span4">Avec liaison HS</th>
+                                                                                               
+                                                            <td class="text-right">xxxx</td> 
+                                                        </tr>
+                                                    </thead>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        
+                                    </div>
+                                        <div class="row-fluid">
+                                       
+                                              <div class="span5">
+                                                <h4 class="page-header">Données en entrée</h4>
+                                                <table class="table table-bordered">
+                                                    <tbody>
+                                                        <thead>
+                                                            <tr>
+                                                            <th class="span4"> Volume (Mo) </th>
+                                                            <td class="text-right">#{beanDashbord.bilanInterface.volumeEntrant}</td>
+                                                        </tr>
+                                                    
+                                                        <tr>
+                                                            <th class="span4">Nb. DC</th>  
+                                                            <td class="text-right">#{beanDashbord.bilanInterface.dcEntrant}</td>  
+                                                        </tr>
+                                                        <tr>
+                                                            <th class="span4">Débit en (Ko/s)</th>
+                                                                                               
+                                                            <td class="text-right">xxxx</td> 
+                                                        </tr>
+                                                          <tr>
+                                                            <th class="span4">Débit en (DC/s)</th>
+                                                                                               
+                                                            <td class="text-right">xxxx</td> 
+                                                        </tr>
+
+                                                        </thead>
+
+                                                    </tbody>
+                                                </table>
+                                                <h4 class="page-header">Nb. de lots</h4>
+                                                  <table class="table table-bordered">
+                                                    <tbody>
+                                                        <thead>
+                                                            <tr>
+                                                            <th class="span4"> Non fermés </th>
+                                                            <td class="text-right">xxx</td>
+                                                        </tr>
+                                                    
+                                                        <tr>
+                                                            <th class="span4">Fermés non envoyés</th>  
+                                                            <td class="text-right">xxxx</td>  
+                                                        </tr>
+                                                        </thead>
+
+                                                    </tbody>
+                                                </table>
+                                                     <table class="table table-bordered">
+                                                    <tbody>
+                                                        <thead>
+                                                            <tr>
+                                                            <th class="span4">Nb.DC hors-délai </th>
+                                                            <td class="text-right">#{beanDashbord.bilanInterface.nbDcHorsDelai}</td>
+                                                            </tr>
+                                                        </thead>
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                    
+                                                <div class="span5">
+                                                <h4 class="page-header">Données en sortie</h4>
+                                                <table class="table table-bordered">
+                                                    <tbody>
+                                                            <thead>
+                                                              <tr>
+                                                            <th class="span4"> Volume (Mo) </th>
+                                                            <td class="text-right">#{beanDashbord.bilanInterface.volumeSortant}</td>
+                                                        </tr>
+                                                    
+                                                        <tr>
+                                                            <th class="span4">Nb. DC</th>  
+                                                            <td class="text-right">#{beanDashbord.bilanInterface.dcSortant}</td>  
+                                                        </tr>
+                                                        <tr>
+                                                            <th class="span4">Débit en (Ko/s)</th>
+                                                                                               
+                                                            <td class="text-right">xxxx</td> 
+                                                        </tr>
+                                                          <tr>
+                                                            <th class="span4">Débit en (DC/s)</th>
+                                                                                               
+                                                            <td class="text-right">xxxx</td> 
+                                                        </tr>
+                                                        <tr>
+                                                            <th class="span4">Nb. de fichiers</th>  
+                                                            <td class="text-right">#{beanDashbord.bilanInterface.nbFichierSortant}</td>  
+                                                        </tr>
+                                                                      <tr>
+                                                            <th class="span4">Nb. de messages</th>  
+                                                            <td class="text-right">#{beanDashbord.bilanInterface.nbMessageSortant}</td>  
+                                                        </tr>
+                                                                
+                                                                <tr>        
+                                                        <th class="span4">Nb. DC détruit</th>  
+                                                        <td class="text-right">#{beanDashbord.bilanInterface.nbDcDetruit}</td>  
+                                                        </tr>
+                                                                         <tr>
+                                                            <th class="span4">Nb. DC inattendus</th>  
+                                                            <td class="text-right">#{beanDashbord.bilanInterface.nbDCInattendu}</td>  
+                                                        </tr>
+                                                                
+                                                                
+                                                             </thead>
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                   
+                                  
+                                    
+                                </div>
+
+                            </div>
+                            <div class="tab-pane" id="tabs-acc">
+                                <div id="faq-section3" class="accordion">
+                                    <div class="row-fluid">
+                                        <div class="span10">
+                                            <h4 class="page-header">Nombre d'ECC</h4>
+                                            <table class="table table-bordered">
+                                                <tbody>
+                                                    <thead>
+                                                        <tr>
+                                                            <th class="span4"> Total </th>
+                                                            <td class="text-right">xxx</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th class="span4">dont :</th> 
+                                                           
+                                                        </tr>
+                                                        <tr>
+                                                            <th class="span4">ECC fil de l'eau</th>  
+                                                            <td class="text-right">xxxx</td>  
+                                                        </tr>
+                                                        <tr>
+                                                            <th class="span4">ECC par lots</th>
+                                                                                               
+                                                            <td class="text-right">xxxx</td> 
+                                                        </tr>
+                                                          <tr>
+                                                            <th class="span4">Avec liaison HS</th>
+                                                                                               
+                                                            <td class="text-right">xxxx</td> 
+                                                        </tr>
+                                                    </thead>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        
+                                    </div>
+                                        <div class="row-fluid">
+                                       
+                                              <div class="span5">
+                                                <h4 class="page-header">Données en entrée</h4>
+                                                <table class="table table-bordered">
+                                                    <tbody>
+                                                        <thead>
+                                                            <tr>
+                                                            <th class="span4"> Volume (Mo) </th>
+                                                            <td class="text-right">xxx</td>
+                                                        </tr>
+                                                    
+                                                        <tr>
+                                                            <th class="span4">Nb. DC</th>  
+                                                            <td class="text-right">xxxx</td>  
+                                                        </tr>
+                                                        <tr>
+                                                            <th class="span4">Débit en (Ko/s)</th>
+                                                                                               
+                                                            <td class="text-right">xxxx</td> 
+                                                        </tr>
+                                                          <tr>
+                                                            <th class="span4">Débit en (DC/s)</th>
+                                                                                               
+                                                            <td class="text-right">xxxx</td> 
+                                                        </tr>
+
+                                                        </thead>
+
+                                                    </tbody>
+                                                </table>
+                                                <h4 class="page-header">Nb. de lots</h4>
+                                                  <table class="table table-bordered">
+                                                    <tbody>
+                                                        <thead>
+                                                            <tr>
+                                                            <th class="span4"> Non fermés </th>
+                                                            <td class="text-right">xxx</td>
+                                                        </tr>
+                                                    
+                                                        <tr>
+                                                            <th class="span4">Fermés non envoyés</th>  
+                                                            <td class="text-right">xxxx</td>  
+                                                        </tr>
+                                                        </thead>
+
+                                                    </tbody>
+                                                </table>
+                                                     <table class="table table-bordered">
+                                                    <tbody>
+                                                        <thead>
+                                                            <tr>
+                                                            <th class="span4">Nb.DC hors-délai </th>
+                                                            <td class="text-right">xxx</td>
+                                                            </tr>
+                                                        </thead>
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                    
+                                                <div class="span5">
+                                                <h4 class="page-header">Données en sortie</h4>
+                                                <table class="table table-bordered">
+                                                    <tbody>
+                                                            <thead>
+                                                              <tr>
+                                                            <th class="span4"> Volume (Mo) </th>
+                                                            <td class="text-right">xxx</td>
+                                                        </tr>
+                                                    
+                                                        <tr>
+                                                            <th class="span4">Nb. DC</th>  
+                                                            <td class="text-right">xxxx</td>  
+                                                        </tr>
+                                                        <tr>
+                                                            <th class="span4">Débit en (Ko/s)</th>
+                                                                                               
+                                                            <td class="text-right">xxxx</td> 
+                                                        </tr>
+                                                          <tr>
+                                                            <th class="span4">Débit en (DC/s)</th>
+                                                                                               
+                                                            <td class="text-right">xxxx</td> 
+                                                        </tr>
+                                                        <tr>
+                                                            <th class="span4">Nb. de fichiers</th>  
+                                                            <td class="text-right">xxxx</td>  
+                                                        </tr>
+                                                                      <tr>
+                                                            <th class="span4">Nb. de messages</th>  
+                                                            <td class="text-right">xxxx</td>  
+                                                        </tr>
+                                                                
+                                                                <tr>        
+                                                        <th class="span4">Nb. DC détruit</th>  
+                                                            <td class="text-right">xxxx</td>  
+                                                        </tr>
+                                                                         <tr>
+                                                            <th class="span4">Nb. DC inattendus</th>  
+                                                            <td class="text-right">xxxx</td>  
+                                                        </tr>
+                                                                
+                                                                
+                                                             </thead>
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                   
+                                  
+                                    
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tabs-sous-acc01"> DWH_ACC_01</div>
+                            <div class="tab-pane" id="tabs-sous-acc02">DWH_ACC_02</div>
+                            <div class="tab-pane" id="tabs-sous-accomy01"> DWH_ACC_OMY_01</div>
+                            
+                            
+                            <div class="tab-pane" id="tabs-accg">ACCG</div>
+                           
+                            <div class="tab-pane" id="tabs-sous-accg03">DWH_ACCG_03</div>
+                            <div class="tab-pane" id="tabs-sous-accg04">DWH_ACCG_04</div>
+                            <div class="tab-pane" id="tabs-sous-accgomy01">DWH_ACCG_OMY_01</div>
+                            <div class="tab-pane" id="tabs-sous-accgomy02">DWH_ACCG_OMY_02</div>
+                            
+                            
+                                              
+                          
+                                
+                            <div class="tab-pane" id="tabs-crs1_air">CRS1_AIR</div>
+                            <div class="tab-pane" id="tabs-sous-tn1crs1air01">TN1CRS1_AIR_01</div>
+                            <div class="tab-pane" id="tabs-crs1_ccn">CRS1_CCN</div>
+                            <div class="tab-pane" id="tabs-sous-tn2crs1ccn01">TN2CRS1_CCN_01</div>
+                    
+                            <div class="tab-pane" id="tabs-crs1_sdp">CRS1_SDP</div>
+                            <div class="tab-pane" id="tabs-sous-tn1crs1sdp01">TN1CRS1_SDP_01</div>
+                            <div class="tab-pane" id="tabs-crs2_air">CRS2_AIR</div>
+                            <div class="tab-pane" id="tabs-sous-tn2crs2air01">TN2CRS2_AIR_01</div>
+      
+                            
+                            <div class="tab-pane" id="tabs-crs2_ccn">CRS2_CCN</div>
+                            <div class="tab-pane" id="tabs-sous-tn2crs2ccn01">TN2CRS2_CCN_01</div>
+                                  
+                            
+                            <div class="tab-pane" id="tabs-crs2_sdp">CRS2_SDP</div>
+                            <div class="tab-pane" id="tabs-sous-tn2crs2ccn02">TN2CRS2_SDP_02</div>
+                            <div class="tab-pane" id="tabs-dnxms">DNXMS</div>
+                            <div class="tab-pane" id="tabs-sous-dnxms02">DNXMS_02</div>
+                            <div class="tab-pane" id="tabs-sous-dnxms03">DNXMS_03</div>
+                            
+                            
+                                                            
+                                
+                            
+                            
+                            <div class="tab-pane" id="tabs-dwhvoucher">DWHVOUCHER</div>
+                            <div class="tab-pane" id="tabs-sous-dwhvoucheromy01">DWH_VOUCHER_OMY_01</div>
+                            <div class="tab-pane" id="tabs-sous-dwhvoucheromy02">DWH_VOUCHER_OMY_02</div>
+                            <div class="tab-pane" id="tabs-sous-dwhvoucheromy03">DWH_VOUCHER_OMY_03</div>
+                            
+                                
+                            <div class="tab-pane" id="tabs-dwsform">DWS_FORM</div>
+                            <div class="tab-pane" id="tabs-sous-dwsform">DWS_FORM</div>
+                            <div class="tab-pane" id="tabs-sous-dwsform02">DWS_FORM02</div>
+                            
+                            <div class="tab-pane" id="tabs-hdtform">HDT_FORM</div>
+                            <div class="tab-pane" id="tabs-sous-hdtform">HDT_FORM</div>
+                            
+                            <div class="tab-pane" id="tabs-machdata">MACH_DATA</div>
+                            <div class="tab-pane" id="tabs-sous-machdata01">MACH_DATA_01</div>
+                                                  
+                            <div class="tab-pane" id="tabs-notiflcy">NOTIF_LCY</div>
+                            <div class="tab-pane" id="tabs-sous-notiflcy01">NOTIF_LCY_01</div>
+                            <div class="tab-pane" id="tabs-sous-notiflcy02">NOTIF_LCY_02</div>
+                            <div class="tab-pane" id="tabs-pps">PPS</div>
+                            <div class="tab-pane" id="tabs-omy">OMY</div>
+                            <div class="tab-pane" id="tabs-sous-dwhppsomy03">DWH_PPS_OMY_03</div>
+                            <div class="tab-pane" id="tabs-ore">ORE</div>
+                            <div class="tab-pane" id="tabs-sous-dwhppsore03">DWH_PPS_ORE_03</div>
+                            <div class="tab-pane" id="tabs-sous-test">TEST</div>
+                            
+                            <div class="tab-pane" id="tabs-supe">SUPE</div>
+                            <div class="tab-pane" id="tabs-dwhomy">DWH_OMY</div>
+                            <div class="tab-pane" id="tabs-sous-dwhomy01">DWH_OMY_01</div>
+                            <div class="tab-pane" id="tabs-dwhore">DWH_ORE</div>
+                            
+                            
+                            <div class="tab-pane" id="tabs-sous-dwhore01">DWH_ORE_01</div>
+                            <div class="tab-pane" id="tabs-sous-dwhore02">DWH_ORE_02</div>
+                            <div class="tab-pane" id="tabs-sous-dwhore03">DWH_ORE_03</div>
+                                 
+                            
+                            <div class="tab-pane" id="tabs-jupiterfiltreomy">JUPITER_FITRE_OMY</div>
+                            <div class="tab-pane" id="tabs-sous-jupiteromyfilter01">JUPITER_OMY_FILTER_01</div>
+                            <div class="tab-pane" id="tabs-jupiteromy">JUPITER_OMY</div>
+                            <div class="tab-pane" id="tabs-sous-jupiteromy02">JUPITER_OMY_02</div>
+                            <div class="tab-pane" id="tabs-sous-jupiteromy03">JUPITER_OMY_03</div>
+                            <div class="tab-pane" id="tabs-sous-jupiteromy03">JUPITER_OMY_04</div>
+                            
+                            <div class="tab-pane" id="tabs-jupiterore">JUPITER_ORE</div>
+                            <div class="tab-pane" id="tabs-sous-jupiterore01">JUPITER_ORE_01</div>
+                            <div class="tab-pane" id="tabs-sous-jupiterore02">JUPITER_ORE_02</div>
+                            <div class="tab-pane" id="tabs-jupiterorefilter">JUPITER_ORE_FILTER</div>
+                            <div class="tab-pane" id="tabs-sous-jupiterorefilter01">JUPITER_ORE_FILTER_01</div>
+                            
+                            
+                            <div class="tab-pane" id="tabs-machmsc">MACH_MSC</div>
+                            <div class="tab-pane" id="tabs-sous-machmsc01">MACH_MSC_01</div>
+                            <div class="tab-pane" id="tabs-sous-machmsc02">MACH_MSC_02</div>
+                            
+                            
+                            <div class="tab-pane" id="tabs-snpibadomy">SNPI_BAD_OMY</div>
+                            <div class="tab-pane" id="tabs-sous-snpiomybad">SNPI_OMY_BAD</div>
+                            <div class="tab-pane" id="tabs-snpibadore">SNPI_BAD_ORE</div>
+                             <div class="tab-pane" id="tabs-sous-snpibadore">SNPI_BAD_ORE</div>
+                            <div class="tab-pane" id="tabs-snpiomy01">SNPI_OMY</div>
+                            <div class="tab-pane" id="tabs-sous-snpiomy01"> SNPI_OMY_01</div>
+                            <div class="tab-pane" id="tabs-snpiore">SNPI_ORE</div>
+                            <div class="tab-pane" id="tabs-sous-snpi01">SNPI_01</div>
+                            <div class="tab-pane" id="tabs-sous-snpi03">SNPI_03</div>
+                            
+                            
+                            <div class="tab-pane" id="tabs-syniverse">SYNIVERSE</div>
+                            <div class="tab-pane" id="tabs-sous-syniverse01">SYNIVERSE_01</div>
+                            <div class="tab-pane" id="tabs-sous-syniverse02">SYNIVERSE_02</div>
+                            <div class="tab-pane" id="tabs-vol">VOL</div>
+                            <div class="tab-pane" id="tabs-omy">OMY</div>
+                            <div class="tab-pane" id="tabs-sous-dwhvolomy01">DWH_VOL_OMY_03</div>
+                            <div class="tab-pane" id="tabs-ore">ORE</div>
+                            <div class="tab-pane" id="tabs-sous-dwhvolore01">DWH_VOL_ORE_01</div>
+                            <div class="tab-pane" id="tabs-sous-dwhvolore03">DWH_VOL_ORE_03</div>
+                            
+
+                            
+                            <div class="tab-pane" id="tabs-echange">echange</div>
+                            <div class="tab-pane" id="tabs-supervision">SUPERVISION</div>
+                            <div class="tab-pane" id="tabs-dwhtran">DWHTran</div>
+                            <div class="tab-pane" id="tabs-sous-dwhvoucher01">DWH_VOUCHER_01</div>
+                            <div class="tab-pane" id="tabs-sous-dwhv01">DWH_V_01</div>
+                             <div class="tab-pane" id="tabs-voucher">VOUCHER</div>
+                            <div class="tab-pane" id="tabs-sous-crsvoucher01">CRS_VOUCHER_01</div>
+                            <div class="tab-pane" id="tabs-sous-crsvoucher02">CRS_VOUCHER_02</div>
+                            <div class="tab-pane" id="tabs-sous-crsvoucher03">CRS_VOUCHER_03</div> 
+                            
+                            <div class="tab-pane" id="tabs-qualif">qualif</div>
+                            <div class="tab-pane" id="tabs-ftp">FTP</div>
+                            
+                            <div class="tab-pane" id="tabs-sous-crsair01">CRS-AIR_01</div>
+                            <div class="tab-pane" id="tabs-sous-crsccn01">CRS-CCN_01</div>
+                            <div class="tab-pane" id="tabs-sous-crssdp01">CRS-SDP_01</div>
+                            <div class="tab-pane" id="tabs-sous-volibill01"> DWH_VOLIBILL_01</div>
+                            <div class="tab-pane" id="tabs-sous-dwhvoucher03">DWH_VOUCHER_03</div>
+                            <div class="tab-pane" id="tabs-sous-dwhvoucher04">DWH_VOUCHER_04</div>
+                            <div class="tab-pane" id="tabs-sous-dwhvoucher05">DWH_VOUCHER_05</div>
+        
+                            <div class="tab-pane" id="tabs-sous-moctlv02">MOCTLV02</div>
+                            <div class="tab-pane" id="tabs-sous-moctlv03">MOCTLV03</div>
+                            <div class="tab-pane" id="tabs-sous-moctlv04">MOCTLV04</div>
+                            <div class="tab-pane" id="tabs-sous-numcorrel01"> NUM_CORREL01</div>
+                            <div class="tab-pane" id="tabs-sous-recycleTLV01">RecycleTLV_01</div>
+                            
+
+
+
+
+                        </div>
+                    </div>
+
+                </div>
+                <ui:include src="include/modals/modalAlarmeInterface.xhtml"></ui:include>
+                <footer> 
+                    <script>var d = new Date();
+            if (d.getFullYear() === 2013) {
+                document.write('2013');
+            } else {
+                document.write('2013-' + d.getFullYear());
+            }</script> <strong>Sofrecom Platine</strong></footer>
+            </div>
+
+
+
+        </div>
+
+        <a href="#" id="to-top"><i class="icon-chevron-up"></i></a>
+
+
+        
+    </h:body>
+</html>

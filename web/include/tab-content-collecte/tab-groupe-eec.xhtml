@@ -1,0 +1,102 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <h:panelGroup class="tab-pane" id="tabs-group-eec" layout="block">
+        <h:panelGroup id="tabs--group-eec-panel">
+            <h4>#{beanCollect.currentArboEEC.nomRacine}</h4>
+            <div class="row-fluid">
+
+                <div class="span6">
+                    <h4 class="page-header">Sessions</h4>
+                    <table class="table table-bordered">
+                        <tbody>
+                            <thead>
+                                <tr>
+                                    <th class="span4"> Session</th>
+                                    <th class="span4"><i class="icon-retweet"></i>En cours</th> 
+                                    <th class="span4"><i class="icon-minus-sign"></i>Arrêt</th>                                    
+                                    <th class="span4"><i class="icon-warning-sign"></i>Essai</th>     
+                                </tr>
+                                <tr>
+                                    <td class="text-left">DC</td>
+                                    <td class="text-right"><span class="badge badge-success">#{beanCollect.countSubEECSessionNormal()}</span></td> 
+                                    <td class="text-right"><span class="badge badge-important">#{beanCollect.countSubEECSessionArret()}</span></td>                                    
+                                    <td class="text-right"><span class="badge badge-warning">#{beanCollect.countSubEECSessionEssaie()}</span></td>    
+                                </tr>
+
+                            </thead>
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="span6">
+                    <h4 class="page-header">Nombre de liaisons</h4>
+                    <table class="table table-bordered">
+                        <tbody>
+                            <thead>
+                                <tr>
+                                    <th class="span4">Liaisons</th>
+                                    <th class="span4"><i class="icon-ok"></i>OK</th>
+                                    <th class="span4"><i class="icon-remove"></i>HS</th>      
+                                </tr>
+                                <tr>             
+                                    <td class="span4">Normale</td> 
+                                    <td class="text-right"><span class="badge badge-success">#{beanCollect.countSubEECLiaisonNormal()}</span></td>                                    
+                                    <td class="text-right"><span class="badge badge-important">#{beanCollect.countSubEECLiaisonHSNormal()}</span></td>    
+                                </tr>
+                                <tr>             
+                                    <td class="span4">Secours</td> 
+                                    <td class="text-right"><span class="badge badge-success">#{beanCollect.countSubEECLiaisonSecours()}</span></td>                                    
+                                    <td class="text-right"><span class="badge badge-important">#{beanCollect.countSubEECLiaisonHSSecours()}</span></td>    
+                                </tr>
+
+                            </thead>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row-fluid">
+                <div class="span6">
+                    <h4 class="page-header">EEC fil de l'eau</h4>
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="text-left">Nb.blocs recus (A)</td>
+                                <td class="span1 text-center">#{beanCollect.countSubEECBlocReçu()}</td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">Nb.blocs rejetés (A)</td>
+                                <td class="span1 text-center">#{beanCollect.countSubEECBlocRejete()}</td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">Nb.blocs perdus (A)</td>
+                                <td class="span1 text-center">#{beanCollect.countSubEECBlocPerdu()}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="span6">
+                    <h4 class="page-header">EEC fichiers</h4>
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="text-left">Nb.fichiers recus (A)</td>
+                                <td class="span1 text-center">#{beanCollect.countSubEECFichierReçu()}</td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">Nb.fichiers rejetés (A)</td>
+                                <td class="span1 text-center">#{beanCollect.countSubEECFichierRejete()}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </h:panelGroup>
+    </h:panelGroup>
+
+</ui:composition>
+

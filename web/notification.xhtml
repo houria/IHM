@@ -1,0 +1,348 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html">> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html">> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html">> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html"
+                             xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                             xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                             xmlns:f="http://xmlns.jcp.org/jsf/core"> <!--<![endif]-->
+    <h:head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <title>Traitement</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1" />    
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,400italic,700,700italic" />       
+        <link rel="stylesheet" href="css/bootstrap.css" />
+        <link rel="stylesheet" href="css/plugins.css" />
+        <link rel="stylesheet" href="css/main.css" />
+        <style>
+            .custome_sub-header{
+                margin:10px 0px 20px;
+            }
+            .form-actions input{
+                float: right;
+                margin-left: 5px;
+            }
+            .form-horizontal .controls {
+                margin-left: 80px;
+            }
+            .form-horizontal .control-label {
+                width: 80px;
+            }
+            .form-box .form-actions {
+                padding-left: 140px;
+            }
+        </style>
+        <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+
+        <script src="js/vendor/jquery-1.8.3.min.js"></script>
+        <script src="js/vendor/bootstrap.min.js"></script> 
+        <script type="text/javascript">
+            $(function() {
+
+                $("#notification-tabs a").click(function(e) {
+                    e.preventDefault();
+                    $(this).tab("show");
+                });
+
+
+
+            });
+            function checkCompte() {
+                alert("chek compte");
+                if ($("#form_compte_mail\\:input-email").val().length === 0)
+                {
+                    alert("Veuillez saisir l'adresse mail");
+                    return false;
+                }
+                if ($("#form_compte_mail\\:input-pass").val().length === 0)
+                {
+                    alert("Veuillez saisir le mot de passe");
+                    return false;
+                }
+
+            }
+            function creerCompte(data) {
+                alert("cree compte");
+                if (data.status == 'success') {
+                    $("#form_compte_mail div.alert-success").show();
+                    $("#form_compte_mail div.alert-danger").hide();
+                }
+            }
+            function modifierCompte(data) {
+                if (data.status == 'success') {
+                    $("#form_compte_mail div.alert-success").show();
+                    $("#form_compte_mail div.alert-danger").hide();
+                }
+            }
+            function supprimerCompte(data) {
+                if (data.status == 'success') {
+                    $("#form_compte_mail div.alert-danger").show();
+                    $("#form_compte_mail div.alert-success").hide();
+                }
+            }
+        </script>
+        <script src="js/plugins.js"></script> 
+        <script src="js/main.js"></script>
+
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    </h:head>
+    <h:body>
+
+        <div id="page-container">
+
+            <!-- la barre de navigation -->
+            <header class="navbar navbar-inverse">
+                <div class="navbar-inner remove-radius remove-box-shadow">
+                    <div class="container-fluid">
+                        <ul class="nav pull-right visible-phone visible-tablet">
+                            <li class="divider-vertical remove-margin"></li>
+                            <li> <a href="javascript:void(0)" data-toggle="collapse" data-target=".nav-collapse"> <i class="icon-reorder"></i> </a> </li>
+                        </ul>
+                        <a href="dashbord.xhtml" class="brand"><img src="img/template/logo.png" alt="logo" /></a>
+                        <div id="loading" class="hide pull-left"><i class="icon-certificate icon-spin"></i></div>
+
+                        <ul id="widgets" class="nav pull-right">
+                            <li class="divider-vertical remove-margin"></li>
+
+                            <li class="dropdown dropdown-user"> <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-lock"></i><b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li> <a href="index.xhtml"><i class="icon-lock"></i> Fermer la session</a> </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </header>
+            <!-- ***************************************************** -->
+            <div id="inner-container">
+                <ui:include src="include/primary_menu.xhtml">
+                    <ui:param name="active" value="Notification" />
+                </ui:include>
+                <div id="page-content">
+
+                    <ul id="nav-info" class="clearfix">
+                        <li><a href="dashbord.xhtml"><i class="icon-home"></i></a></li>
+                        <li class="active"><a href="">notification</a></li>
+                    </ul>
+
+                    <div class="row-fluid tabs-left">
+                        <ul id="faq-tabs" class="nav nav-tabs span3">
+                            <li class="active">
+                                <a href="#faq-tabs-section1">
+                                    <i class="icon-cogs"></i>
+                                    General
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#faq-tabs-section2">
+                                    <i class="icon-envelope"></i>
+                                    Configurer Email
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#faq-tabs-section2">
+                                    <i class="icon-phone icon-envelope"></i>
+                                    <i class="icon-envelope"></i>
+
+                                    Configurer SMS
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#faq-tabs-section2">
+                                    <i class="icon-tablet"></i>
+                                    Configurer Gateway
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#faq-tabs-section2">
+                                    <i class="icon-phone"></i>
+                                    Filter
+                                </a>
+                            </li>
+                        </ul>
+
+                        <!--    <div class="row-fluid">
+                                <div class="offset2 span8">
+                                    <ul id="notification-tabs" class="nav nav-pills">
+                                        <li class="active"><a href="#error-tabs-mail">Configuration Mail</a></li>
+                                        <li><a href="#error-tabs-sms">Configuration SMS</a></li>
+                                    </ul>
+                                </div>
+                            </div> -->
+
+                        <div class="tab-content tab-content-default">
+
+                            <div id="error-tabs-mail" class="tab-pane row-fluid active">
+                                <div class="span12">
+                                    <h4 class="sub-header custome_sub-header">
+                                        Configuration Mail : <small>Configurez le système de notification des alarmes par mail</small>
+                                    </h4>
+                                </div>
+
+                                <div class="row span11">
+                                    <div class="span6">
+                                        <div class="well push">
+                                            <h4>Compte principale: <small>Configurer le compte gmail utilisé pour l'envoie des emails de notification</small></h4>
+                                        </div>
+
+                                        <h:form id="form_compte_mail" class="form-horizontal form-box">
+                                            <h4 class="form-box-header">Compte</h4>
+
+                                            <div class="alert alert-success" style="display: none">
+                                                <button data-dismiss="alert" class="close" type="button">×</button>
+                                                <strong>Compte mail changé!</strong> la modification a été effectuée avec succès!
+                                            </div>
+                                            <div class="alert alert-danger" style="display: none">
+                                                <button data-dismiss="alert" class="close" type="button">×</button>
+                                                <strong>Compte mail effacé!</strong> la modification a été effectuée avec succès!
+                                            </div>
+                                            <div class="form-box-content">
+                                                <div class="control-group">
+                                                    <label class="control-label" for="input-email">Email</label>
+                                                    <div class="controls">
+                                                        <h:inputText id="input-email" class="span12" value="#{beanNotification.compteActuel.mail}" required="true"></h:inputText>
+                                                    </div>
+                                                </div>
+                                                <h:panelGroup rendered="#{beanNotification.compteActuel.idCompte eq 0}" layout="block" class="control-group">
+                                                    <label class="control-label" for="input-pass">Mot de passe</label>
+                                                    <div class="controls">
+                                                        <h:inputSecret id="input-pass" class="span12" value="#{beanNotification.compteActuel.motDePasse}" required="true"></h:inputSecret>
+                                                    </div>
+                                                </h:panelGroup>
+                                                <div class="form-actions">
+                                                    <h:commandButton rendered="#{beanNotification.compteActuel.idCompte eq 0}" 
+                                                                     class="btn btn-success" 
+                                                                     value="Créer"
+                                                                     action="#{beanNotification.changeCompteActuel()}"
+                                                                     onclick="checkCompte()">
+                                                        <f:ajax render="@form" onevent="creerCompte" disabled="#{ (empty beanNotification.compteActuel.mail) or (empty beanNotification.compteActuel.motDePasse)}"/>
+                                                    </h:commandButton>
+                                                    <h:panelGroup rendered="#{beanNotification.compteActuel.idCompte ne 0}">
+                                                        <h:commandButton class="btn btn-success"  value="Modifier">
+                                                            <f:ajax  onevent="modifierCompte"  listener="#{beanNotification.changeCompteActuel()}" execute="form_compte_mail" render=":form_compte_mail"/>
+                                                        </h:commandButton>
+                                                    </h:panelGroup>
+                                                    <h:commandButton class="btn btn-danger"  value="Supprimer">
+                                                        <f:ajax onevent="supprimerCompte"  listener="#{beanNotification.suppprimerCompteActuel()}" execute="form_compte_mail" render=":form_compte_mail"/>
+                                                    </h:commandButton>
+                                                </div>
+                                            </div>
+                                        </h:form>
+                                    </div>
+
+                                    <div class="span6">
+                                        <div class="well push">
+                                            <h4>Liste des adresses: <small>Ajouter les adresses mail qui seront notifiées de l'arrivée des alarmes</small></h4>
+                                        </div>
+
+                                        <form class="form-horizontal form-box" onsubmit="return false;">
+                                            <h4 class="form-box-header">Emails notifiés</h4>
+                                            <div class="form-box-content">
+                                                <div class="control-group">
+                                                    <label class="control-label" for="input-liste-email">Liste des Emails</label>
+                                                    <div class="controls">
+                                                        <textarea id="input-liste-email" class="textarea-elastic" margin-left="-31" rows="3"></textarea>
+                                                        <span class="help-block">
+                                                            Veuillez mettre une adresse mail par ligne.
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-actions">
+                                                    <input type="submit" class="btn btn-success" value="Enregistrer" />
+                                                    <input type="submit" class="btn btn-danger" value="Vider" />
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="error-tabs-sms" class="tab-pane row-fluid">
+                                <div class="offset2 span12">
+                                    <h4 class="sub-header">
+                                        Configuration SMS : <small>Configurez le système de notification des alarmes par SMS</small>
+                                    </h4>
+                                </div>
+
+
+                                <div class="row span11">
+                                    <div class="span6">
+                                        <div class="well push">
+                                            <h4>Compte principale: <small>Configurer l'adresse ip utilisé pour l'envoie des emails de notification</small></h4>
+                                        </div>
+
+                                        <form class="form-horizontal form-box" onsubmit="return false;">
+                                            <h4 class="form-box-header">Compte</h4>
+                                            <div class="form-box-content">
+                                                <div class="control-group">
+                                                    <label class="control-label" for="input-text">Adresse Ip :</label>
+                                                    <div class="controls">
+                                                        <input type="email" id="input-email" class="input-medium" />
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-actions">
+                                                    <input type="submit" class="btn btn-success" value="Enregistrer" />
+                                                    <input type="submit" class="btn btn-danger" value="Vider" />
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <div class="span6">
+                                        <div class="well push">
+                                            <h4>Liste des numéros: <small>Ajouter les numéros de téléphone qui seront notifiées de l'arrivée des alarmes</small></h4>
+                                        </div>
+
+                                        <form class="form-horizontal form-box" onsubmit="return false;">
+                                            <h4 class="form-box-header">Numéros notifiés</h4>
+                                            <div class="form-box-content">
+                                                <div class="control-group">
+                                                    <label class="control-label" for="input-text">Entrer un numéro</label>
+                                                    <div class="controls">
+                                                        <input type="password" id="input-text" class="input-medium" />
+                                                    </div>
+                                                </div>
+                                                <div class="control-group">
+                                                    <label class="control-label" for="input-liste-email">Liste des numéros </label>
+                                                    <div class="controls">
+                                                        <textarea id="input-liste-email" class="textarea-elastic" rows="3"></textarea>
+                                                        <span class="help-block">
+                                                            Veuillez mettre un numéro par ligne.
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-actions">
+                                                    <input type="submit" class="btn btn-success" value="Enregistrer" />
+                                                    <input type="submit" class="btn btn-danger" value="Vider" />
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <footer> 
+                    <script>var d = new Date();
+                        if (d.getFullYear() === 2013) {
+                            document.write('2013');
+                        } else {
+                            document.write('2013-' + d.getFullYear());
+                        }</script> <strong>@Sofrecom Platine</strong></footer>
+
+            </div>
+        </div>
+        <a href="#" id="to-top"><i class="icon-chevron-up"></i></a>
+
+
+
+    </h:body>
+</html>
+
+

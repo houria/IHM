@@ -1,0 +1,321 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html">> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html">> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html">> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html"> <!--<![endif]-->
+    <h:head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <title>Platine</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,400italic,700,700italic" />
+        <link rel="stylesheet" href="css/bootstrap.css" />
+        <link rel="stylesheet" href="css/plugins.css" />
+        <link rel="stylesheet" href="css/main.css" />
+        <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+        <style>
+
+            h1{
+                text-align:center;
+                margin-top:20px;
+                font-size:24px;
+                font-style:normal;
+            }
+            h4{
+                text-align:center;
+            }
+            .logo{
+                background-color:#FFF;
+                float:left;
+                margin-top:2x;
+            }
+            .map{
+                width:40%;
+                height:300px;
+                background-color:#0C9;
+                float:left;
+                margin-left:19.70%;
+
+
+            }
+            .conteneur{
+                background-color:#F93;
+                margin-top:8%;}
+
+            #countriesBlock{
+                width:20%;
+                height:300px;
+                background-color:#343434;
+                font-style:normal;
+                font-family:Tahoma, Geneva, sans-serif;
+                text-decoration:none;
+                text-outline:none;
+                text-transform:lowercase;
+                text-shadow:#FFF;
+                float:right;
+                margin-right:19.70%;
+                color: #FFF;	
+            }
+
+
+
+            .container div #countriesBlock #lists #mainCountries li a {
+                color: #FFF;
+            }
+            .kcc {
+                font-size: 10px;
+            }
+            .container div #countriesBlock #lists #otherCountries {
+                color: #FFF;
+            }
+            .container div #countriesBlock #lists #mainCountries li a {
+                font-family: "MS Serif", "New York", serif;
+            }
+        </style>
+
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+
+        <script type="text/javascript">
+            /************ Methode d'initialisation de la map ********************/
+            function initialize() {
+
+                // creation des points
+                var centreRabat = new google.maps.LatLng(34.02528, -6.83611);
+                var centreAlgerie = new google.maps.LatLng(28.149503, 2.541962);
+                var centreTunis = new google.maps.LatLng(36.81808, 10.160186);
+                var centreArgentine = new google.maps.LatLng(-35.173808, -64.438478);
+                var centrePolska = new google.maps.LatLng(53.173119, 18.233642);
+                var centreJordan = new google.maps.LatLng(31.830899, 36.351928);
+                var centreDubaï = new google.maps.LatLng(25.296854, 55.318451);
+                var centreIndonésie = new google.maps.LatLng(-4.214943, 121.889647);
+                var centreVietnam = new google.maps.LatLng(14.98724, 107.966308);
+                var centreThailand = new google.maps.LatLng(16.341226, 99.836425);
+
+
+                var markerRabat = new google.maps.Marker({
+                    position: centreRabat,
+                    title: "Rabat"
+                });
+                var markerTunis = new google.maps.Marker({
+                    position: centreTunis,
+                    title: "Tunis"
+                });
+                var markerAlgerie = new google.maps.Marker({
+                    position: centreAlgerie,
+                    title: "Algerie"
+                });
+                var markerArgentine = new google.maps.Marker({
+                    position: centreArgentine,
+                    title: "Argentine"
+                });
+                var markerPolska = new google.maps.Marker({
+                    position: centrePolska,
+                    title: "Polska"
+                });
+                var markerJordan = new google.maps.Marker({
+                    position: centreJordan,
+                    title: "Jordan"
+                });
+                var markerDubaï = new google.maps.Marker({
+                    position: centreDubaï,
+                    title: "Dubaï"
+                });
+                var markerIndonésie = new google.maps.Marker({
+                    position: centreIndonésie,
+                    title: "Indonésie"
+                });
+                var markerVietnam = new google.maps.Marker({
+                    position: centreVietnam,
+                    title: "Vietnam"
+                });
+                var markerThailand = new google.maps.Marker({
+                    position: centreThailand,
+                    title: "Thailand"
+                });
+
+                // creation des options de la map ( type, centre ..)
+                var mapOptions = {
+                    center: new google.maps.LatLng(34.02528, -6.83611),
+                    zoom: 1,
+                    disableDefaultUI: true,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
+
+                // creation de la map
+                var map = new google.maps.Map(document.getElementById("map-canvas"),
+                        mapOptions);
+
+                var image = "img/pointOrange.gif";
+                var markerRabat = new google.maps.Marker({
+                    position: centreRabat,
+                    title: "Rabat",
+                    map: map,
+                    icon: image
+                });
+                var markerTunis = new google.maps.Marker({
+                    position: centreTunis,
+                    title: "Tunis",
+                    map: map,
+                    icon: image
+                });
+
+
+                var markerAlgerie = new google.maps.Marker({
+                    position: centreAlgerie,
+                    title: "Algerie",
+                    map: map,
+                    icon: image
+                });
+
+                var markerArgentine = new google.maps.Marker({
+                    position: centreArgentine,
+                    title: "Argentine",
+                    map: map,
+                    icon: image
+                });
+                var markerPolska = new google.maps.Marker({
+                    position: centrePolska,
+                    title: "Polska",
+                    map: map,
+                    icon: image
+                });
+                var markerJordan = new google.maps.Marker({
+                    position: centreJordan,
+                    title: "Jordan",
+                    map: map,
+                    icon: image
+                });
+
+                var markerDubaï = new google.maps.Marker({
+                    position: centreDubaï,
+                    title: "Dubaï",
+                    map: map,
+                    icon: image
+                });
+                var markerVietnam = new google.maps.Marker({
+                    position: centreVietnam,
+                    title: "Vietnam",
+                    map: map,
+                    icon: image
+                });
+                var markerIndonésie = new google.maps.Marker({
+                    position: centreIndonésie,
+                    title: "Indonésie",
+                    map: map,
+                    icon: image
+                });
+
+                var markerThailand = new google.maps.Marker({
+                    position: centreThailand,
+                    title: "Thailand",
+                    map: map,
+                    icon: image
+                });
+
+
+
+                // ajout des points sur la map
+                markerRabat.setMap(map);
+                markerTunis.setMap(map);
+                markerAlgerie.setMap(map);
+                markerArgentine.setMap(map);
+                markerPolska.setMap(map);
+                markerJordan.setMap(map);
+                markerDubaï.setMap(map);
+                markerIndonésie.setMap(map);
+                markerVietnam.setMap(map);
+                markerThailand.setMap(map);
+
+                // ajouter l'evenement click sur le point de rabat
+                google.maps.event.addListener(markerRabat, 'click', redirectRabat);
+                google.maps.event.addListener(markerTunis, 'click', redirectTunis);
+                // style pour enlever les noms des pays
+                var styles = [
+                    {
+                        featureType: "all",
+                        elementType: "labels",
+                        stylers: [
+                            {visibility: "off"}
+                        ]
+                    }
+                ];
+                map.setOptions({styles: styles});
+
+
+
+
+
+            }
+
+
+            // fonction de redirection executée lors du click sur un point
+            function redirectRabat()
+            {
+                window.location = "http://www.google.com/"  // a modifier
+            }
+            function redirectTunis()
+            {
+                window.location = "http://www.google.com/"   // a modifiers
+            }
+
+            // appliquer le style sur la map
+
+            google.maps.event.addDomListener(window, 'load', initialize);
+
+        </script>
+    </h:head>
+    <h:body>
+
+
+
+
+        <ul class="nav-dash">
+            <img src="img/template/Sofrecom_Logo_PNG.png" alt="logo" width='190' height="90"/>
+            Sofrecom, The Know-How Network
+        </ul>
+
+
+        <div class="container">
+
+            <div class="row">
+
+
+                <span class="style-mod">
+                    Veuillez choisir un pays pour accèder à l'interface de gestion
+                </span>
+
+                <div>
+                    <div id="map-canvas" class="map">
+                    </div>
+
+                    <div id="countriesBlock">
+                        <div id="lists">
+                            <ul id="mainCountries">
+                                <li><a href="/Maroc">Maroc</a></li>
+                                <li><a href="/Algérie">Algérie</a></li>
+                                <li><a href="/Tunisie">tunisie</a></li>
+                                <li><a href="/Jordan">Jordan</a></li>
+                                <li><a href="/Dubaï">Dubaï</a></li>
+                                <li><a href="/vietnam">vietnam</a></li>
+                                <li><a href="/Indonésie">Indonésie</a></li>
+                                <li><a href="/Thailand">Thailand</a></li>
+                                <li><a href="/Argentine">Argentine</a></li>
+                                <li><a href="/Polska">Polska</a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <script src="js/vendor/jquery-1.8.3.min.js"></script> 
+        <script src="js/vendor/bootstrap.min.js"></script> 
+    </h:body>
+</html>
+
+
+

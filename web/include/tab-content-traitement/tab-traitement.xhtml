@@ -1,0 +1,106 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+    <div class="tab-pane active" id="tabs-#{beanTraitement.arborescence.getNomRacine()}">
+
+        <div class="row-fluid">
+
+            <div class="span6">
+                <h4 class="page-header">Nombre de bloc traiter</h4>
+                <table class="table table-bordered">
+                    <tbody>
+                        <thead>
+                            <tr>
+                                <td class="span4">Nb.blocs identifiés (A)</td>
+                                <td class="text-right">#{beanTraitement.bilanTraitement.nbBlocIdentifies}</td>  
+
+                            </tr>
+
+                            <tr> 
+                                <td class="span4">Nb.blocs rejetés (A)</td>
+                                <td class="text-right">#{beanTraitement.bilanTraitement.nbBlocRejetés}</td>    
+                            </tr>
+                            <tr>             
+                                <td class="span4">Nb.d'octets rejetés (A)</td> 
+                                <td class="text-right">#{beanTraitement.bilanTraitement.nbOctetsRejetes}</td>                                    
+
+                            </tr>
+
+                        </thead>
+
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="span6">
+                <h4 class="page-header">Nombre total de DC envoyés à :</h4>
+                <table class="table table-bordered">
+                    <tbody>                        
+                            <tr>
+                                <td class="span4">Distribution (D)</td>
+                                <td class="text-right">#{beanTraitement.bilanTraitement.dcVersDistribution}</td>  
+
+                            </tr>
+
+                            <tr> 
+                                <td class="span4">Erronés (D)</td>
+                                <td class="text-right">#{beanTraitement.bilanTraitement.dcErronnes}</td>    
+                            </tr>
+                            <tr>
+                                <td class="span4">Eliminés (D)</td>
+                                <td class="text-right">#{beanTraitement.bilanTraitement.dcElimines}</td>
+
+                            </tr>
+                            <tr><td class="span4">Total Dc Sortant</td>
+                                <td class="text-right">#{beanTraitement.bilanTraitement.dcSortie}</td> </tr>
+
+                            <tr>             
+                                <td class="span4">Divers (D)</td> 
+                                <td class="text-right">#{beanTraitement.bilanTraitement.dcDivers}</td>                                    
+                            </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div class="span12">
+                <h4 class="page-header">Données et DC</h4>
+                <div class="span6">
+
+                    <table class="table table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="span4">Volume de données identifiées (Mo)(S)</td>
+                                    <td class="text-right">#{beanTraitement.bilanTraitement.volumeDonneesIndetifies}</td>  
+
+                                </tr>
+
+                                <tr> 
+                                    <td class="span4">Nb.DC identifiés(D)</td>
+                                    <td class="text-right">#{beanTraitement.bilanTraitement.nbDCIdentifies}</td>    
+                                </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="span6">
+
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="span4">Débit de données identifiées (Ko/s)(S)</td>
+                                <td class="text-right">#{beanTraitement.bilanTraitement.debitDonneesIdentifier}</td>
+                            </tr>
+                            <tr>
+                                <td class="span4">Débit DC identifiés(/s)(D)</td>
+                                <td class="text-right">#{beanTraitement.bilanTraitement.debitDCIdentifier}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</ui:composition>

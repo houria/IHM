@@ -1,0 +1,66 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <aside id="page-sidebar" class="nav-collapse collapse">
+
+        <nav id="primary-nav">
+            <ul>
+
+                <li> <a href="dashbord.xhtml" class="#{active eq 'Platine' ? 'active':''}"><i class="icon-dashboard"></i>Platine</a></li>
+                <li>
+                    <h:form>
+                        <h:commandLink class="#{active eq 'Collecte' ? 'active':''}" action="#{beanCollect.initialiser()}">
+                            <i class="icon-copy"></i>
+                            Collecte
+                        </h:commandLink>                                
+                    </h:form>
+                </li>
+                <li>
+                    <h:form>
+                        <h:commandLink class="#{active eq 'Traitement' ? 'active':''}" action="#{beanTraitement.initialiser()}">
+                            <i class="icon-edit"></i>
+                            Traitement
+                        </h:commandLink>                                
+                    </h:form>
+                </li>
+                <li>
+                    <h:form>
+                        <h:commandLink class="#{active eq 'Distribution' ? 'active':''}" action="#{beanDistribution.initialiser()}">
+                            <i class="icon-upload-alt"></i>
+                            Distribution
+                        </h:commandLink>                                
+                    </h:form>
+                </li>
+                <li>
+                    <h:form>
+                        <h:commandLink class="#{active eq 'Interfaces' ? 'active':''}" action="#{beanInterface.initialiser()}">
+                            <i class="icon-desktop"></i>
+                            Interfaces
+                        </h:commandLink>                                
+                    </h:form>
+                </li>
+                <li>
+                    <h:form>
+                        <h:commandLink class="#{active eq 'Notification' ? 'active':''}" action="#{beanNotification.initialiser()}">
+                            <i class="icon-bell"></i>
+                            Notification Alarmes
+                        </h:commandLink>                                
+                    </h:form>
+                </li>
+                <li>
+                    <h:form>
+                        <h:commandLink class="#{active eq 'Statistiques' ? 'active':''}" action="#{beanStatistiques.initialiser()}">
+                            <i class="icon-calendar"></i>
+                            Statistiques
+                        </h:commandLink>                                
+                    </h:form>
+                </li>
+
+            </ul>
+        </nav>
+    </aside>
+</ui:composition>
+
